@@ -6,18 +6,18 @@
   <meta name="keywords" content=" redis , redis 集群 ">
   <meta name="description" content="redis集群 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  创建redis 配置文件模板$ cd /home/redis-cluster    ##在创建目录中 $ touch redis-cluster.tmpl  ##创建模版件  1.编辑模板配置文件 $ vi redis-cluster.tmpl 2.输">
+<meta name="description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  测试构建 6 个节点组成的 redis-cluster 集群节点点IP为 docker 主机IP    节点IP 端口 主/从    47.97.XXX.XXX 7010 master   47.97.XXX.XXX 7011 master   47.">
 <meta name="keywords" content="redis,redis 集群">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis集群">
 <meta property="og:url" content="https://mztb0511.github.io/2019/08/14/redis集群/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  创建redis 配置文件模板$ cd /home/redis-cluster    ##在创建目录中 $ touch redis-cluster.tmpl  ##创建模版件  1.编辑模板配置文件 $ vi redis-cluster.tmpl 2.输">
+<meta property="og:description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  测试构建 6 个节点组成的 redis-cluster 集群节点点IP为 docker 主机IP    节点IP 端口 主/从    47.97.XXX.XXX 7010 master   47.97.XXX.XXX 7011 master   47.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T11:36:48.388Z">
+<meta property="og:updated_time" content="2019-08-14T11:51:26.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis集群">
-<meta name="twitter:description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  创建redis 配置文件模板$ cd /home/redis-cluster    ##在创建目录中 $ touch redis-cluster.tmpl  ##创建模版件  1.编辑模板配置文件 $ vi redis-cluster.tmpl 2.输">
+<meta name="twitter:description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  测试构建 6 个节点组成的 redis-cluster 集群节点点IP为 docker 主机IP    节点IP 端口 主/从    47.97.XXX.XXX 7010 master   47.97.XXX.XXX 7011 master   47.">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -143,19 +143,7 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">hexo</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">hexo3</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">makrdown 语法</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -166,19 +154,23 @@
         <a href="javascript:" class="color4">redis 集群</a>
     </li>
     
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">hexo3</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
+    </li>
+    
     <div class="clearfix"></div>
 </div>
 
     
     <nav id="title-list-nav">
-        
-        <a  class="工具 "
-           href="/2019/08/13/hexo3使用说明/"
-           data-tag="hexo,hexo3"
-           data-author="" >
-            <span class="post-title" title="hexo3使用说明">hexo3使用说明</span>
-            <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
-        </a>
         
         <a  class="工具 "
            href="/2019/08/13/Markdown语法/"
@@ -189,19 +181,27 @@
         </a>
         
         <a  class="运维 "
-           href="/2019/08/13/linux常用命令/"
-           data-tag="linux"
-           data-author="" >
-            <span class="post-title" title="linux常用命令">linux常用命令</span>
-            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
-        </a>
-        
-        <a  class="运维 "
            href="/2019/08/14/redis集群/"
            data-tag="redis,redis 集群"
            data-author="" >
             <span class="post-title" title="redis集群">redis集群</span>
             <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
+        </a>
+        
+        <a  class="工具 "
+           href="/2019/08/13/hexo3使用说明/"
+           data-tag="hexo,hexo3"
+           data-author="" >
+            <span class="post-title" title="hexo3使用说明">hexo3使用说明</span>
+            <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/13/linux常用命令/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux常用命令">linux常用命令</span>
+            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
         </a>
         
     </nav>
@@ -242,7 +242,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-14 19:36:48'>2019-08-14 13:43</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-14 19:51:26'>2019-08-14 13:43</time>
         
     </div>
     <div class="article-meta">
@@ -282,6 +282,47 @@
         <blockquote>
 <p>基于docker 容器化方式部署 redis-cluster<br>redis 镜像基于官方 <code>redis:4.0.10</code><br>docker for linux</p>
 </blockquote>
+<p>测试构建 6 个节点组成的 redis-cluster 集群<br>节点点IP为 docker 主机IP</p>
+<table>
+<thead>
+<tr>
+<th>节点IP</th>
+<th>端口</th>
+<th>主/从</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>47.97.XXX.XXX</td>
+<td>7010</td>
+<td>master</td>
+</tr>
+<tr>
+<td>47.97.XXX.XXX</td>
+<td>7011</td>
+<td>master</td>
+</tr>
+<tr>
+<td>47.97.XXX.XXX</td>
+<td>7012</td>
+<td>master</td>
+</tr>
+<tr>
+<td>47.97.XXX.XXX</td>
+<td>7013</td>
+<td>slave</td>
+</tr>
+<tr>
+<td>47.97.XXX.XXX</td>
+<td>7014</td>
+<td>slave</td>
+</tr>
+<tr>
+<td>47.97.XXX.XXX</td>
+<td>7015</td>
+<td>slave</td>
+</tr>
+</tbody></table>
+<p><em>特别提醒：只是使用主机IP ，需要设置防火墙安全策略</em></p>
 <h3 id="创建redis-配置文件模板"><a href="#创建redis-配置文件模板" class="headerlink" title="创建redis 配置文件模板"></a>创建redis 配置文件模板</h3><pre><code class="$">$ cd /home/redis-cluster    ##在创建目录中
 $ touch redis-cluster.tmpl  ##创建模版件
 </code></pre>
@@ -298,7 +339,7 @@ cluster-config-file nodes.conf
 ##超时时间       
 cluster-node-timeout 5000
 ##实际为各节点网卡分配ip  先用上网关ip代替        
-cluster-announce-ip 47.97.5.XXX
+cluster-announce-ip 47.97.XXX.XXX
 ##节点映射端口     
 cluster-announce-port ${PORT}
 ##节点总线端  
@@ -345,18 +386,18 @@ cluster_stats_messages_sent:0
 cluster_stats_messages_received:0
 </code></pre><h3 id="将-6-个节点加入一个集群"><a href="#将-6-个节点加入一个集群" class="headerlink" title="将 6 个节点加入一个集群"></a>将 6 个节点加入一个集群</h3><p>进入redis 7010 节点</p>
 <pre><code>$ redis-cli -h 127.0.0.1 -p 7010
-$ CLUSTER MEET 47.97.5.XXX 7011
-$ CLUSTER MEET 47.97.5.XXX 7012
-$ CLUSTER MEET 47.97.5.XXX 7013
-$ CLUSTER MEET 47.97.5.XXX 7014
-$ CLUSTER MEET 47.97.5.XXX 7015
+$ CLUSTER MEET 47.97.XXX.XXX 7011
+$ CLUSTER MEET 47.97.XXX.XXX 7012
+$ CLUSTER MEET 47.97.XXX.XXX 7013
+$ CLUSTER MEET 47.97.XXX.XXX 7014
+$ CLUSTER MEET 47.97.XXX.XXX 7015
 $ CLUSTER NODES
 ...
 ...
 </code></pre><h3 id="定义集群的主节点-分配-slots"><a href="#定义集群的主节点-分配-slots" class="headerlink" title="定义集群的主节点 (分配 slots )"></a>定义集群的主节点 (分配 slots )</h3><p>设置（7010，7011，7012 ）三个节点为主节点</p>
 <pre><code>$ vi addSlots.sh</code></pre><pre><code>#!/bin/bash
 #这里部署的是三台主节点,这里演示是用了单机，这里可以根据实际情况换成对应节点ip即可
-node_list=(47.97.5.XXX 47.97.5.XXX 47.97.5.XXX)
+node_list=(47.97.XXX.XXX 47.97.XXX.XXX 47.97.XXX.XXX)
 #注意这里的端口号书序必须和node对应
 port_list=(7010 7011 7012)
 
@@ -397,7 +438,7 @@ cluster_stats_messages_received:539930
 </code></pre><h3 id="配置高可用集群-给主节点分配从节点"><a href="#配置高可用集群-给主节点分配从节点" class="headerlink" title="配置高可用集群 给主节点分配从节点"></a>配置高可用集群 给主节点分配从节点</h3><h4 id="创建-sh-脚本添加从节点，-添加从节点时通过连接-从节点服务器执行-CLUSTER-REPLICATE-和集群中的各节点id-来添加"><a href="#创建-sh-脚本添加从节点，-添加从节点时通过连接-从节点服务器执行-CLUSTER-REPLICATE-和集群中的各节点id-来添加" class="headerlink" title="创建 sh 脚本添加从节点， 添加从节点时通过连接 从节点服务器执行 CLUSTER REPLICATE 和集群中的各节点id 来添加"></a>创建 sh 脚本添加从节点， 添加从节点时通过连接 从节点服务器执行 <code>CLUSTER REPLICATE</code> 和集群中的各节点id 来添加</h4><pre><code>$ vim addReplicate.sh
 </code></pre><pre><code>#!/bin/bash
 #这里是从节点的ip地址
-replicate_node_list=(47.97.5.xx 47.97.5.xx 47.97.5.xx)
+replicate_node_list=(47.97.XXX.XXX 47.97.XXX.XXX 47.97.XXX.XXX)
 replicate_port_list=(7013 7014 7015) #与上面的从节点ip一一对应
 master_port_list=(7010 7011 7012) 
 
@@ -428,7 +469,7 @@ done
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-08-14, 13:43:24</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-14, 19:36:48</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-14, 19:51:26</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/14/redis集群/" title="redis集群">https://mztb0511.github.io/2019/08/14/redis集群/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -490,7 +531,7 @@ done
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#hexo','#hexo3','#makrdown 语法','#linux','#redis','#redis 集群',],
+            'data': ['#makrdown 语法','#redis','#redis 集群','#hexo','#hexo3','#linux',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
