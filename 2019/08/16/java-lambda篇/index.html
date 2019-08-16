@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>linux常用命令 | mzTB0511</title>
-  <meta name="keywords" content=" linux ">
-  <meta name="description" content="linux常用命令 | mzTB0511">
+  <title>java-lambda篇 | mzTB0511</title>
+  <meta name="keywords" content=" lambda , stream ">
+  <meta name="description" content="java-lambda篇 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
 <meta name="keywords" content="lambda,stream">
@@ -280,9 +280,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-linux常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-java-lambda篇" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">linux常用命令</h1>
+        <h1 class="article-title">java-lambda篇</h1>
     
     <div class="article-meta">
         
@@ -290,21 +290,25 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="运维">运维</a>
+                <a href="javascript:" data-rel="java">java</a>/
+            
+                <a href="javascript:" data-rel="lambda">lambda</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">linux</a>
+            <a href="javascript:" class="color2">lambda</a>
+            
+            <a href="javascript:" class="color2">stream</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-16 13:55:42'>2019-08-13 20:59</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-16 14:44:03'>2019-08-16 14:01</time>
         
     </div>
     <div class="article-meta">
@@ -326,7 +330,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#linux-运维常用命令手册"><span class="toc-text">linux 运维常用命令手册</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lambda-使用"><span class="toc-text">Lambda 使用</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -341,7 +345,26 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="linux-运维常用命令手册"><a href="#linux-运维常用命令手册" class="headerlink" title="linux 运维常用命令手册"></a>linux 运维常用命令手册</h2>
+        <h3 id="Lambda-使用"><a href="#Lambda-使用" class="headerlink" title="Lambda 使用"></a>Lambda 使用</h3><blockquote>
+<p>遍历List集合，修改元素值</p>
+</blockquote>
+<pre><code>  List&lt;String&gt; list = Arrays.asList(&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;);
+  List newList = list.stream().map(item -&gt; &quot;你好&quot; + item).collect(Collectors.toList());
+  System.out.println(JSONObject.toJSONString(newList));
+  Json 输出 [&quot;你好张三&quot;,&quot;你好李四&quot;,&quot;你好王五&quot;]
+</code></pre><blockquote>
+<p>遍历List集合，重构元素结构，生成新的 List</p>
+</blockquote>
+<pre><code>  List&lt;String&gt; list = Arrays.asList(&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;);
+  List&lt;Map&gt; newList = list.stream().map(item -&gt; {
+      Map&lt;String,String&gt; itemMap = new HashMap(0);
+      itemMap.put(&quot;id&quot;,&quot;1&quot;);
+      itemMap.put(&quot;name&quot;,item);
+      return itemMap;}
+      ).collect(Collectors.toList());
+
+  System.out.println(JSONObject.toJSONString(newList));
+  Json 输出[{&quot;name&quot;:&quot;张三&quot;,&quot;id&quot;:&quot;1&quot;},{&quot;name&quot;:&quot;李四&quot;,&quot;id&quot;:&quot;1&quot;},{&quot;name&quot;:&quot;王五&quot;,&quot;id&quot;:&quot;1&quot;}]</code></pre>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>
@@ -354,12 +377,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>linux常用命令</p>
+    <p><span class="copy-title">文章标题:</span>java-lambda篇</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-13, 20:59:49</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-16, 13:55:42</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/13/linux常用命令/" title="linux常用命令">https://mztb0511.github.io/2019/08/13/linux常用命令/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-16, 14:01:54</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-16, 14:44:03</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/16/java-lambda篇/" title="java-lambda篇">https://mztb0511.github.io/2019/08/16/java-lambda篇/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

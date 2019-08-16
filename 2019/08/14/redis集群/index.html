@@ -6,18 +6,18 @@
   <meta name="keywords" content=" redis , redis 集群 ">
   <meta name="description" content="redis集群 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  测试构建 6 个节点组成的 redis-cluster 集群节点点IP为 docker 主机IP    节点IP 端口 主/从    47.97.XXX.XXX 7010 master   47.97.XXX.XXX 7011 master   47.">
-<meta name="keywords" content="redis,redis 集群">
+<meta name="description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
+<meta name="keywords" content="lambda,stream">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis集群">
-<meta property="og:url" content="https://mztb0511.github.io/2019/08/14/redis集群/index.html">
+<meta property="og:title" content="java-lambda篇">
+<meta property="og:url" content="https://mztb0511.github.io/2019/08/16/java-lambda篇/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  测试构建 6 个节点组成的 redis-cluster 集群节点点IP为 docker 主机IP    节点IP 端口 主/从    47.97.XXX.XXX 7010 master   47.97.XXX.XXX 7011 master   47.">
+<meta property="og:description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-14T12:59:08.653Z">
+<meta property="og:updated_time" content="2019-08-16T06:44:03.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis集群">
-<meta name="twitter:description" content="基于docker 容器化方式部署 redis-clusterredis 镜像基于官方 redis:4.0.10docker for linux  测试构建 6 个节点组成的 redis-cluster 集群节点点IP为 docker 主机IP    节点IP 端口 主/从    47.97.XXX.XXX 7010 master   47.97.XXX.XXX 7011 master   47.">
+<meta name="twitter:title" content="java-lambda篇">
+<meta name="twitter:description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,7 +80,23 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(4)</small></div></li>
+    <li><div class="all active">全部文章<small>(6)</small></div></li>
+    
+        
+            
+            <li><div data-rel="java"><i class="fold iconfont icon-right"></i>java<small>(1)</small></div>
+                
+                    <ul class="sub hide">
+                        
+                        <li><div data-rel="lambda">lambda<small>(1)</small></div>
+                            
+                        </li>
+                            
+                    </ul>
+                
+            </li>
+            
+        
     
         
             
@@ -92,7 +108,7 @@
     
         
             
-            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(2)</small></div>
+            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(3)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -110,6 +126,10 @@
             
         
     
+        
+            
+        
+    
 </ul>
 <div class="left-bottom">
     <div class="menus">
@@ -120,7 +140,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="4">
+<input type="hidden" id="yelog_site_posts_number" value="6">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -155,15 +175,27 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">stream</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">makrdown 语法</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">hexo</a>
+        <a href="javascript:" class="color1">linxu</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">hexo3</a>
+        <a href="javascript:" class="color4">vim</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -175,7 +207,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
+        <a href="javascript:" class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">hexo3</a>
     </li>
     
     <div class="clearfix"></div>
@@ -183,6 +219,14 @@
 
     
     <nav id="title-list-nav">
+        
+        <a  class="java lambda "
+           href="/2019/08/16/java-lambda篇/"
+           data-tag="lambda,stream"
+           data-author="" >
+            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
+            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
+        </a>
         
         <a  class="工具 "
            href="/2019/08/13/Markdown语法/"
@@ -192,12 +236,20 @@
             <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
         </a>
         
-        <a  class="工具 "
-           href="/2019/08/13/hexo3使用说明/"
-           data-tag="hexo,hexo3"
+        <a  class="运维 "
+           href="/2019/08/16/linux-vim篇/"
+           data-tag="linxu,vim"
            data-author="" >
-            <span class="post-title" title="hexo3使用说明">hexo3使用说明</span>
-            <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
+            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
+            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/13/linux常用命令/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux常用命令">linux常用命令</span>
+            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
         </a>
         
         <a  class="运维 redis "
@@ -208,12 +260,12 @@
             <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
         </a>
         
-        <a  class="运维 "
-           href="/2019/08/13/linux常用命令/"
-           data-tag="linux"
+        <a  class="工具 "
+           href="/2019/08/13/hexo3使用说明/"
+           data-tag="hexo,hexo3"
            data-author="" >
-            <span class="post-title" title="linux常用命令">linux常用命令</span>
-            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+            <span class="post-title" title="hexo3使用说明">hexo3使用说明</span>
+            <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
     </nav>
@@ -545,7 +597,7 @@ done
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#hexo','#hexo3','#redis','#redis 集群','#linux',],
+            'data': ['#lambda','#stream','#makrdown 语法','#linxu','#vim','#linux','#redis','#redis 集群','#hexo','#hexo3',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
