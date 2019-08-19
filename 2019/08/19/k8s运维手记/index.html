@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>hexo3使用说明 | mzTB0511</title>
-  <meta name="keywords" content=" hexo , hexo3 ">
-  <meta name="description" content="hexo3使用说明 | mzTB0511">
+  <title>k8s运维手记 | mzTB0511</title>
+  <meta name="keywords" content=" k8s , 防火墙 , iptables , pod ip无法访问 ">
+  <meta name="description" content="k8s运维手记 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
 <meta name="keywords" content="k8s,防火墙,iptables,pod ip无法访问">
@@ -304,9 +304,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-hexo3使用说明" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-k8s运维手记" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">hexo3使用说明</h1>
+        <h1 class="article-title">k8s运维手记</h1>
     
     <div class="article-meta">
         
@@ -314,23 +314,27 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="工具">工具</a>
+                <a href="javascript:" data-rel="运维">运维</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">hexo</a>
+            <a href="javascript:" class="color4">k8s</a>
             
-            <a href="javascript:" class="color1">hexo3</a>
+            <a href="javascript:" class="color4">防火墙</a>
+            
+            <a href="javascript:" class="color4">iptables</a>
+            
+            <a href="javascript:" class="color1">pod ip无法访问</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-13 20:33:54'>2019-08-13 19:32</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-19 19:37:04'>2019-08-19 15:57</time>
         
     </div>
     <div class="article-meta">
@@ -352,7 +356,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo3-使用说明"><span class="toc-text">Hexo3 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TaskList"><span class="toc-text">TaskList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Syntax-Hightlighting"><span class="toc-text">Syntax Hightlighting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Table"><span class="toc-text">Table</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-node的防火墙问题导致pod-ip无法访问"><span class="toc-text">Kubernetes node的防火墙问题导致pod ip无法访问</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -367,66 +371,25 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hexo3-使用说明"><a href="#Hexo3-使用说明" class="headerlink" title="Hexo3 使用说明"></a>Hexo3 使用说明</h2><pre><code># 你的头像url
-avatar: /img/avatar.jpg
-favicon: /img/avatar.jpg
-</code></pre><ol>
-<li>替换 source/img/avatar.jpg 图片。</li>
-<li>修改 _config.yml 中头像的配置记录</li>
-</ol>
-<pre><code>#链接图标，链接为空则不显示
-link:
-  rss: /atom.xml
-  github: https://github.com/yelog
-  facebook: https://www.facebook.com/faker.tops
-  twitter:
-  linkedin:
-  instagram:
-  reddit: https://www.reddit.com/user/yelog/
-  weibo: http://weibo.com/u/2307534817
-  email: jaytp@qq.com
-</code></pre><pre><code>[rectangle setX: 10 y: 10 width: 20 height: 20];
-&#x2F;&#x2F;执行分发逻辑
+        <h3 id="Kubernetes-node的防火墙问题导致pod-ip无法访问"><a href="#Kubernetes-node的防火墙问题导致pod-ip无法访问" class="headerlink" title="Kubernetes node的防火墙问题导致pod ip无法访问"></a>Kubernetes node的防火墙问题导致pod ip无法访问</h3><p>1.先把服务停掉</p>
+<pre><code>systemctl stop flanneld docker kubelet kube-proxy
+</code></pre><p>2.查看当前规则，然后清空</p>
+<pre><code>iptables -L -n
+iptables -F &amp;&amp;  iptables -X &amp;&amp;  iptables -F -t nat &amp;&amp;  iptables -X -t nat
+</code></pre><p>3.重启iptables 和 开启服务</p>
+<pre><code>systemctl restart iptables
+systemctl start flanneld docker kubelet kube-proxy
+</code></pre><p>4.再次查看防火墙策略 和清空掉</p>
+<pre><code>iptables -L -n
+iptables -F &amp;&amp;  iptables -X &amp;&amp;  iptables -F -t nat &amp;&amp;  iptables -X -t nat
+</code></pre><p>5.pod不能访问网络问题<br> docker 容器无法访问网络的的问题   出现错误 curl err6 Could not resolve host:</p>
+<p>6.查看Node节点 flanneld 运行子网</p>
+<pre><code>cat /var/run/flannel/subnet.env 
+</code></pre><p>7.每个Node 添加路由到防火墙</p>
+<pre><code>iptables -t nat -I POSTROUTING -s 10.0.95.1/24 -j MASQUERADE
+iptables -t nat -I POSTROUTING -s 10.0.65.1/24 -j MASQUERADE
+....
 </code></pre>
-
-
-<pre><code>&lt;!-- 我这里是借用了code的样式，所以直接使用code标签。
-    自定义样式，可加入style属性设置--&gt;
-&lt;code class=&quot;site_uv&quot;&gt;&lt;/code&gt;
-&lt;code class=&quot;site_pv&quot;&gt;&lt;/code&gt;
-</code></pre><h3 id="TaskList"><a href="#TaskList" class="headerlink" title="TaskList"></a>TaskList</h3><ul>
-<li><input checked disabled type="checkbox"> @mentions, #refs, <a href>links</a>, <strong>formatting</strong>, and <del>tags</del> supported</li>
-<li><input checked disabled type="checkbox"> list syntax required (any unordered or ordered list supported)</li>
-<li><input checked disabled type="checkbox"> this is a complete item</li>
-<li><input disabled type="checkbox"> this is an incomplete item</li>
-</ul>
-<h3 id="Syntax-Hightlighting"><a href="#Syntax-Hightlighting" class="headerlink" title="Syntax Hightlighting"></a>Syntax Hightlighting</h3><pre><code class="javascript">function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-}</code></pre>
-<p>You can also simply indent your code by four spaces:</p>
-<pre><code>function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-}</code></pre><h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><table>
-<thead>
-<tr>
-<th>FirstHeader</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Content cell 1</td>
-<td>Content cell 2</td>
-</tr>
-<tr>
-<td>Content in first cell</td>
-<td>Content in Second column</td>
-</tr>
-</tbody></table>
-
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
     </div>
@@ -439,12 +402,12 @@ link:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>hexo3使用说明</p>
+    <p><span class="copy-title">文章标题:</span>k8s运维手记</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-13, 19:32:41</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-13, 20:33:54</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/13/hexo3使用说明/" title="hexo3使用说明">https://mztb0511.github.io/2019/08/13/hexo3使用说明/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-19, 15:57:50</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-19, 19:37:04</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/19/k8s运维手记/" title="k8s运维手记">https://mztb0511.github.io/2019/08/19/k8s运维手记/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>

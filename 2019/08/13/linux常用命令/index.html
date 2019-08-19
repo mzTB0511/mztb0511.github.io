@@ -6,18 +6,18 @@
   <meta name="keywords" content=" linux ">
   <meta name="description" content="linux常用命令 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
-<meta name="keywords" content="lambda,stream">
+<meta name="description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
+<meta name="keywords" content="k8s,防火墙,iptables,pod ip无法访问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-lambda篇">
-<meta property="og:url" content="https://mztb0511.github.io/2019/08/16/java-lambda篇/index.html">
+<meta property="og:title" content="k8s运维手记">
+<meta property="og:url" content="https://mztb0511.github.io/2019/08/19/k8s运维手记/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
+<meta property="og:description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T06:44:03.366Z">
+<meta property="og:updated_time" content="2019-08-19T11:37:04.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-lambda篇">
-<meta name="twitter:description" content="Lambda 使用 遍历List集合，修改元素值    List&amp;lt;String&amp;gt; list = Arrays.asList(&amp;quot;张三&amp;quot;,&amp;quot;李四&amp;quot;,&amp;quot;王五&amp;quot;);   List newList = list.stream().map(item -&amp;gt; &amp;quot;你好&amp;quot; + item).collect(Collecto">
+<meta name="twitter:title" content="k8s运维手记">
+<meta name="twitter:description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,7 +80,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(6)</small></div></li>
+    <li><div class="all active">全部文章<small>(7)</small></div></li>
     
         
             
@@ -108,7 +108,7 @@
     
         
             
-            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(3)</small></div>
+            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(4)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -140,7 +140,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="6">
+<input type="hidden" id="yelog_site_posts_number" value="7">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -183,15 +183,15 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">makrdown 语法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">lambda</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color2">stream</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">makrdown 语法</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -204,6 +204,22 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">k8s</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">防火墙</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">iptables</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">pod ip无法访问</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -228,20 +244,20 @@
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
-        <a  class="java lambda "
-           href="/2019/08/16/java-lambda篇/"
-           data-tag="lambda,stream"
-           data-author="" >
-            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
-            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
-        </a>
-        
         <a  class="工具 "
            href="/2019/08/13/Markdown语法/"
            data-tag="makrdown 语法"
            data-author="" >
             <span class="post-title" title="Markdown语法">Markdown语法</span>
             <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
+        </a>
+        
+        <a  class="java lambda "
+           href="/2019/08/16/java-lambda篇/"
+           data-tag="lambda,stream"
+           data-author="" >
+            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
+            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
         </a>
         
         <a  class="运维 "
@@ -258,6 +274,14 @@
            data-author="" >
             <span class="post-title" title="linux常用命令">linux常用命令</span>
             <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/19/k8s运维手记/"
+           data-tag="k8s,防火墙,iptables,pod ip无法访问"
+           data-author="" >
+            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
+            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
         <a  class="运维 redis "
@@ -420,7 +444,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#hexo','#hexo3','#lambda','#stream','#makrdown 语法','#linxu','#vim','#linux','#redis','#redis 集群',],
+            'data': ['#hexo','#hexo3','#makrdown 语法','#lambda','#stream','#linxu','#vim','#linux','#k8s','#防火墙','#iptables','#pod ip无法访问','#redis','#redis 集群',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
