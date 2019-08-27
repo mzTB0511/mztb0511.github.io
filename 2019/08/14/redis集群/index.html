@@ -6,18 +6,21 @@
   <meta name="keywords" content=" redis , redis 集群 ">
   <meta name="description" content="redis集群 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
-<meta name="keywords" content="k8s,防火墙,iptables,pod ip无法访问">
+<meta name="description" content="kubeadm 安装Kubernetes 1.15.2 -最佳实践前言 Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。 一. Kubernetes简介Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集">
+<meta name="keywords" content="k8s,kubeadm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="k8s运维手记">
-<meta property="og:url" content="https://mztb0511.github.io/2019/08/19/k8s运维手记/index.html">
+<meta property="og:title" content="k8s-集群搭建">
+<meta property="og:url" content="https://mztb0511.github.io/2019/08/28/k8s-集群搭建/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
+<meta property="og:description" content="kubeadm 安装Kubernetes 1.15.2 -最佳实践前言 Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。 一. Kubernetes简介Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-19T11:37:04.936Z">
+<meta property="og:image" content="https://mztb0511.github.io/images/dashboard-login.png">
+<meta property="og:image" content="https://mztb0511.github.io/images/dashboard-main.png">
+<meta property="og:updated_time" content="2019-08-27T17:39:50.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="k8s运维手记">
-<meta name="twitter:description" content="Kubernetes node的防火墙问题导致pod ip无法访问1.先把服务停掉 systemctl stop flanneld docker kubelet kube-proxy 2.查看当前规则，然后清空 iptables -L -n iptables -F &amp;amp;&amp;amp;  iptables -X &amp;amp;&amp;amp;  iptables -F -t nat &amp;amp;&amp;amp;">
+<meta name="twitter:title" content="k8s-集群搭建">
+<meta name="twitter:description" content="kubeadm 安装Kubernetes 1.15.2 -最佳实践前言 Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。 一. Kubernetes简介Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集">
+<meta name="twitter:image" content="https://mztb0511.github.io/images/dashboard-login.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,7 +83,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(7)</small></div></li>
+    <li><div class="all active">全部文章<small>(10)</small></div></li>
     
         
             
@@ -92,11 +95,19 @@
     
         
             
-            <li><div data-rel="java"><i class="fold iconfont icon-right"></i>java<small>(1)</small></div>
+            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(7)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="lambda">lambda<small>(1)</small></div>
+                        <li><div data-rel="k8s">k8s<small>(2)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="docker">docker<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="redis">redis<small>(1)</small></div>
                             
                         </li>
                             
@@ -108,11 +119,19 @@
     
         
             
-            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(4)</small></div>
+        
+    
+        
+            
+        
+    
+        
+            
+            <li><div data-rel="java"><i class="fold iconfont icon-right"></i>java<small>(1)</small></div>
                 
                     <ul class="sub hide">
                         
-                        <li><div data-rel="redis">redis<small>(1)</small></div>
+                        <li><div data-rel="lambda">lambda<small>(1)</small></div>
                             
                         </li>
                             
@@ -140,7 +159,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="7">
+<input type="hidden" id="yelog_site_posts_number" value="10">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -179,19 +198,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">hexo</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">hexo3</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">lambda</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">stream</a>
+        <a href="javascript:" class="color2">docker</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -211,11 +218,35 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">hexo3</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">linxu</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color4">vim</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">stream</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -227,7 +258,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
+        <a href="javascript:" class="color3">kubeadm</a>
     </li>
     
     <div class="clearfix"></div>
@@ -244,12 +275,44 @@
             <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
         </a>
         
+        <a  class="运维 docker "
+           href="/2019/08/19/docker-日常运维/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
+            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/19/k8s运维手记/"
+           data-tag="k8s,防火墙,iptables,pod ip无法访问"
+           data-author="" >
+            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
+            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
+        </a>
+        
         <a  class="工具 "
            href="/2019/08/13/hexo3使用说明/"
            data-tag="hexo,hexo3"
            data-author="" >
             <span class="post-title" title="hexo3使用说明">hexo3使用说明</span>
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/16/linux-vim篇/"
+           data-tag="linxu,vim"
+           data-author="" >
+            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
+            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s-项目实战/"
+           data-tag="k8s,k8s实战"
+           data-author="" >
+            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="java lambda "
@@ -261,19 +324,11 @@
         </a>
         
         <a  class="运维 "
-           href="/2019/08/19/k8s运维手记/"
-           data-tag="k8s,防火墙,iptables,pod ip无法访问"
+           href="/2019/08/13/linux常用命令/"
+           data-tag="linux"
            data-author="" >
-            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
-            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 "
-           href="/2019/08/16/linux-vim篇/"
-           data-tag="linxu,vim"
-           data-author="" >
-            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
-            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
+            <span class="post-title" title="linux常用命令">linux常用命令</span>
+            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
         </a>
         
         <a  class="运维 redis "
@@ -284,12 +339,12 @@
             <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
         </a>
         
-        <a  class="运维 "
-           href="/2019/08/13/linux常用命令/"
-           data-tag="linux"
+        <a  class="运维 k8s "
+           href="/2019/08/28/k8s-集群搭建/"
+           data-tag="k8s,kubeadm"
            data-author="" >
-            <span class="post-title" title="linux常用命令">linux常用命令</span>
-            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+            <span class="post-title" title="k8s-集群搭建">k8s-集群搭建</span>
+            <span class="post-date" title="2019-08-28 00:41:16">2019/08/28</span>
         </a>
         
     </nav>
@@ -621,7 +676,7 @@ done
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#hexo','#hexo3','#lambda','#stream','#k8s','#防火墙','#iptables','#pod ip无法访问','#linxu','#vim','#redis','#redis 集群','#linux',],
+            'data': ['#makrdown 语法','#docker','#k8s','#防火墙','#iptables','#pod ip无法访问','#hexo','#hexo3','#linxu','#vim','#k8s实战','#lambda','#stream','#linux','#redis','#redis 集群','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>hexo3使用说明 | mzTB0511</title>
-  <meta name="keywords" content=" hexo , hexo3 ">
-  <meta name="description" content="hexo3使用说明 | mzTB0511">
+  <title>docker-日常运维 | mzTB0511</title>
+  <meta name="keywords" content=" docker ">
+  <meta name="description" content="docker-日常运维 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="kubeadm 安装Kubernetes 1.15.2 -最佳实践前言 Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。 一. Kubernetes简介Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集">
 <meta name="keywords" content="k8s,kubeadm">
@@ -359,9 +359,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-hexo3使用说明" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-docker-日常运维" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">hexo3使用说明</h1>
+        <h1 class="article-title">docker-日常运维</h1>
     
     <div class="article-meta">
         
@@ -369,23 +369,23 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="工具">工具</a>
+                <a href="javascript:" data-rel="运维">运维</a>/
+            
+                <a href="javascript:" data-rel="docker">docker</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color5">hexo</a>
-            
-            <a href="javascript:" class="color1">hexo3</a>
+            <a href="javascript:" class="color2">docker</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-13 20:33:54'>2019-08-13 19:32</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-19 20:12:34'>2019-08-19 20:00</time>
         
     </div>
     <div class="article-meta">
@@ -407,7 +407,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo3-使用说明"><span class="toc-text">Hexo3 使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TaskList"><span class="toc-text">TaskList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Syntax-Hightlighting"><span class="toc-text">Syntax Hightlighting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Table"><span class="toc-text">Table</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何批量删除Docker中已经停止的容器"><span class="toc-text">如何批量删除Docker中已经停止的容器</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -422,65 +422,28 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hexo3-使用说明"><a href="#Hexo3-使用说明" class="headerlink" title="Hexo3 使用说明"></a>Hexo3 使用说明</h2><pre><code># 你的头像url
-avatar: /img/avatar.jpg
-favicon: /img/avatar.jpg
-</code></pre><ol>
-<li>替换 source/img/avatar.jpg 图片。</li>
-<li>修改 _config.yml 中头像的配置记录</li>
-</ol>
-<pre><code>#链接图标，链接为空则不显示
-link:
-  rss: /atom.xml
-  github: https://github.com/yelog
-  facebook: https://www.facebook.com/faker.tops
-  twitter:
-  linkedin:
-  instagram:
-  reddit: https://www.reddit.com/user/yelog/
-  weibo: http://weibo.com/u/2307534817
-  email: jaytp@qq.com
-</code></pre><pre><code>[rectangle setX: 10 y: 10 width: 20 height: 20];
-&#x2F;&#x2F;执行分发逻辑
+        <h3 id="如何批量删除Docker中已经停止的容器"><a href="#如何批量删除Docker中已经停止的容器" class="headerlink" title="如何批量删除Docker中已经停止的容器"></a>如何批量删除Docker中已经停止的容器</h3><p>方法一</p>
+<p>1.显示所有的容器，过滤出Exited状态的容器，取出这些容器的ID</p>
+<pre><code class="bash">docker ps -a|grep Exited|awk&#39;{print $1}&#39;
 </code></pre>
-
-
-<pre><code>&lt;!-- 我这里是借用了code的样式，所以直接使用code标签。
-    自定义样式，可加入style属性设置--&gt;
-&lt;code class=&quot;site_uv&quot;&gt;&lt;/code&gt;
-&lt;code class=&quot;site_pv&quot;&gt;&lt;/code&gt;
-</code></pre><h3 id="TaskList"><a href="#TaskList" class="headerlink" title="TaskList"></a>TaskList</h3><ul>
-<li><input checked disabled type="checkbox"> @mentions, #refs, <a href>links</a>, <strong>formatting</strong>, and <del>tags</del> supported</li>
-<li><input checked disabled type="checkbox"> list syntax required (any unordered or ordered list supported)</li>
-<li><input checked disabled type="checkbox"> this is a complete item</li>
-<li><input disabled type="checkbox"> this is an incomplete item</li>
-</ul>
-<h3 id="Syntax-Hightlighting"><a href="#Syntax-Hightlighting" class="headerlink" title="Syntax Hightlighting"></a>Syntax Hightlighting</h3><pre><code class="javascript">function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-}</code></pre>
-<p>You can also simply indent your code by four spaces:</p>
-<pre><code>function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:&#39;#foo&#39;})
-  }
-}</code></pre><h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><table>
-<thead>
-<tr>
-<th>FirstHeader</th>
-<th>Second Header</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Content cell 1</td>
-<td>Content cell 2</td>
-</tr>
-<tr>
-<td>Content in first cell</td>
-<td>Content in Second column</td>
-</tr>
-</tbody></table>
+<p>2.查询所有的容器，过滤出Exited状态的容器，列出容器ID，删除这些容器</p>
+<pre><code class="bash">docker rm `docker ps -a|grep Exited|awk &#39;{print $1}&#39;`
+</code></pre>
+<p>方法二</p>
+<p>删除所有未运行的容器（已经运行的删除不了，未运行的就一起被删除了）</p>
+<pre><code class="bash">docker rm $(sudo docker ps -a -q)
+</code></pre>
+<p>方法三  <code>推荐</code></p>
+<p>根据容器的状态，删除Exited状态的容器</p>
+<pre><code class="bash">docker rm $(sudo docker ps -qf status=exited)
+</code></pre>
+<p>方法四：</p>
+<p>1.Docker 1.13版本以后，可以使用 docker containers prune 命令，删除孤立的容器。</p>
+<pre><code class="bash">docker container prune
+</code></pre>
+<p>2.删除所有镜像</p>
+<pre><code class="bash">docker rmi $(docker images -q)
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
@@ -494,12 +457,12 @@ link:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>hexo3使用说明</p>
+    <p><span class="copy-title">文章标题:</span>docker-日常运维</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-13, 19:32:41</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-13, 20:33:54</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/13/hexo3使用说明/" title="hexo3使用说明">https://mztb0511.github.io/2019/08/13/hexo3使用说明/</a>
+    <p><span class="copy-title">发布时间:</span>2019-08-19, 20:00:13</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-19, 20:12:34</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/19/docker-日常运维/" title="docker-日常运维">https://mztb0511.github.io/2019/08/19/docker-日常运维/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
