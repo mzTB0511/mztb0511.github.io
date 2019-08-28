@@ -103,11 +103,11 @@
                             
                         </li>
                             
-                        <li><div data-rel="k8s">k8s<small>(2)</small></div>
+                        <li><div data-rel="redis">redis<small>(1)</small></div>
                             
                         </li>
                             
-                        <li><div data-rel="redis">redis<small>(1)</small></div>
+                        <li><div data-rel="k8s">k8s<small>(2)</small></div>
                             
                         </li>
                             
@@ -222,6 +222,10 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">防火墙</a>
     </li>
     
@@ -234,10 +238,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">k8s实战</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">linxu</a>
     </li>
     
@@ -246,15 +246,15 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">redis</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color4">redis 集群</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -299,20 +299,20 @@
             <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
         </a>
         
-        <a  class="运维 "
-           href="/2019/08/19/k8s运维手记/"
-           data-tag="k8s,防火墙,iptables,pod ip无法访问"
-           data-author="" >
-            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
-            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
-        </a>
-        
         <a  class="运维 k8s "
            href="/2019/08/19/k8s-项目实战/"
            data-tag="k8s,k8s实战"
            data-author="" >
             <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
             <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/19/k8s运维手记/"
+           data-tag="k8s,防火墙,iptables,pod ip无法访问"
+           data-author="" >
+            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
+            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
         <a  class="运维 "
@@ -323,20 +323,20 @@
             <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
         </a>
         
-        <a  class="运维 redis "
-           href="/2019/08/14/redis集群/"
-           data-tag="redis,redis 集群"
-           data-author="" >
-            <span class="post-title" title="redis集群">redis集群</span>
-            <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
-        </a>
-        
         <a  class="运维 "
            href="/2019/08/13/linux常用命令/"
            data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux常用命令">linux常用命令</span>
             <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 redis "
+           href="/2019/08/14/redis集群/"
+           data-tag="redis,redis 集群"
+           data-author="" >
+            <span class="post-title" title="redis集群">redis集群</span>
+            <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
         </a>
         
         <a  class="运维 k8s "
@@ -795,7 +795,7 @@ StrikethroughAny word wrapped with two tildes (like this) will appear crossed ou
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#docker','#hexo','#hexo3','#lambda','#stream','#k8s','#防火墙','#iptables','#pod ip无法访问','#k8s实战','#linxu','#vim','#redis','#redis 集群','#linux','#kubeadm',],
+            'data': ['#makrdown 语法','#docker','#hexo','#hexo3','#lambda','#stream','#k8s','#k8s实战','#防火墙','#iptables','#pod ip无法访问','#linxu','#vim','#linux','#redis','#redis 集群','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
