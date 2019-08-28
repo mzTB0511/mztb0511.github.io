@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://mztb0511.github.io/images/dashboard-login.png">
 <meta property="og:image" content="https://mztb0511.github.io/images/dashboard-main.png">
-<meta property="og:updated_time" content="2019-08-27T17:45:19.285Z">
+<meta property="og:updated_time" content="2019-08-28T06:18:05.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s-集群搭建">
 <meta name="twitter:description" content="kubeadm 安装Kubernetes 1.15.2 -最佳实践前言 Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。 一. Kubernetes简介Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集">
@@ -103,11 +103,11 @@
                             
                         </li>
                             
-                        <li><div data-rel="redis">redis<small>(1)</small></div>
+                        <li><div data-rel="k8s">k8s<small>(2)</small></div>
                             
                         </li>
                             
-                        <li><div data-rel="k8s">k8s<small>(2)</small></div>
+                        <li><div data-rel="redis">redis<small>(1)</small></div>
                             
                         </li>
                             
@@ -210,19 +210,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">k8s</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">k8s实战</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">lambda</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color2">stream</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">k8s</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -238,7 +234,15 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
+        <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linxu</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">vim</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -250,11 +254,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linxu</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">vim</a>
+        <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -291,14 +291,6 @@
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
-        <a  class="运维 k8s "
-           href="/2019/08/19/k8s-项目实战/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
-        </a>
-        
         <a  class="java lambda "
            href="/2019/08/16/java-lambda篇/"
            data-tag="lambda,stream"
@@ -315,12 +307,20 @@
             <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
-        <a  class="运维 "
-           href="/2019/08/13/linux常用命令/"
-           data-tag="linux"
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s-项目实战/"
+           data-tag="k8s,k8s实战"
            data-author="" >
-            <span class="post-title" title="linux常用命令">linux常用命令</span>
-            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/16/linux-vim篇/"
+           data-tag="linxu,vim"
+           data-author="" >
+            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
+            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
         </a>
         
         <a  class="运维 redis "
@@ -332,11 +332,11 @@
         </a>
         
         <a  class="运维 "
-           href="/2019/08/16/linux-vim篇/"
-           data-tag="linxu,vim"
+           href="/2019/08/13/linux常用命令/"
+           data-tag="linux"
            data-author="" >
-            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
-            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
+            <span class="post-title" title="linux常用命令">linux常用命令</span>
+            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
         </a>
         
         <a  class="运维 k8s "
@@ -512,7 +512,7 @@ $ A:  当前行末插入
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#docker','#hexo','#hexo3','#k8s','#k8s实战','#lambda','#stream','#防火墙','#iptables','#pod ip无法访问','#linux','#redis','#redis 集群','#linxu','#vim','#kubeadm',],
+            'data': ['#makrdown 语法','#docker','#hexo','#hexo3','#lambda','#stream','#k8s','#防火墙','#iptables','#pod ip无法访问','#k8s实战','#linxu','#vim','#redis','#redis 集群','#linux','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
