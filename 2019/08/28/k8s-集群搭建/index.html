@@ -16,7 +16,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://mztb0511.github.io/images/dashboard-login.png">
 <meta property="og:image" content="https://mztb0511.github.io/images/dashboard-main.png">
-<meta property="og:updated_time" content="2019-08-28T06:18:05.166Z">
+<meta property="og:updated_time" content="2019-08-28T06:21:00.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k8s-集群搭建">
 <meta name="twitter:description" content="kubeadm 安装Kubernetes 1.15.2 -最佳实践前言 Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。 一. Kubernetes简介Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集">
@@ -387,7 +387,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-08-28 14:18:05'>2019-08-28 00:41</time>
+        创建时间:<time class="date" title='更新时间: 2019-08-28 14:21:00'>2019-08-28 00:41</time>
         
     </div>
     <div class="article-meta">
@@ -645,8 +645,10 @@ kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | aw
 <p>6.使用输出的token登录Dashboard。</p>
 <p><img src="/images/dashboard-login.png" alt="登录页"></p>
 <p>8.Dashboard 主界面<br><img src="/images/dashboard-main.png" alt="管理界面"></p>
-<h4 id="Dashboard-管理节点登录token"><a href="#Dashboard-管理节点登录token" class="headerlink" title="Dashboard 管理节点登录token"></a>Dashboard 管理节点登录token</h4><p>eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4taGtoZ2YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYzNkMDYxNWMtOGNkZC00MTMwLWFhODItNGU1NzEwM2M3NmE4Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.s5T-CdYD44LxEaA_o0kgr0lYKZ0FXd7MkULt2ZvqizUsOp7Fn801h8mwo2ft8RxXzNX5Nmr5_VeV-ps0cVwlnb_aS6Qy9Bl10U1uojrsSdWzospYB4_H0ho0nD1qjAxfFtvP3IjHErd4os1qZR2BnVFx9k2_5IxVq3d8W8l_oNQVs53PKvqSziX94POORaHO0ibiNREG1pIMPfvjip_T4yK7o-dqJ4_i-oFxHJgy5fganjBEcnEgmjkmOglMJOQIvLHM9hSrqwUds4I2WHVObyRQ_FtuqxBwa-mR1V_95uk8mZBMmSqbTic3_JuzXgl37J6tfHXGFBUiFkHnw9xl4Q</p>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>特别感谢 :(<a href="https://www.kubernetes.org.cn/5462.html" target="_blank" rel="noopener">https://www.kubernetes.org.cn/5462.html</a>)</p>
+<h4 id="Dashboard-管理节点登录token"><a href="#Dashboard-管理节点登录token" class="headerlink" title="Dashboard 管理节点登录token"></a>Dashboard 管理节点登录token</h4><pre><code class="code">
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4taGtoZ2YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYzNkMDYxNWMtOGNkZC00MTMwLWFhODItNGU1NzEwM2M3NmE4Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.s5T-CdYD44LxEaA_o0kgr0lYKZ0FXd7MkULt2ZvqizUsOp7Fn801h8mwo2ft8RxXzNX5Nmr5_VeV-ps0cVwlnb_aS6Qy9Bl10U1uojrsSdWzospYB4_H0ho0nD1qjAxfFtvP3IjHErd4os1qZR2BnVFx9k2_5IxVq3d8W8l_oNQVs53PKvqSziX94POORaHO0ibiNREG1pIMPfvjip_T4yK7o-dqJ4_i-oFxHJgy5fganjBEcnEgmjkmOglMJOQIvLHM9hSrqwUds4I2WHVObyRQ_FtuqxBwa-mR1V_95uk8mZBMmSqbTic3_JuzXgl37J6tfHXGFBUiFkHnw9xl4Q
+</code></pre>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>特别感谢 :<a href="https://www.kubernetes.org.cn/5462.html" target="_blank" rel="noopener">https://www.kubernetes.org.cn/5462.html</a></p>
 <p>1.集群重新初始化<br>Master 节点执行</p>
 <pre><code class="bash">kubeadm reset
 systemctl daemon-reload
@@ -693,7 +695,7 @@ eebfe256113bee397b218ba832f412273ae734bd4686241fb910885d26efd222
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-08-28, 00:41:16</p>
-    <p><span class="copy-title">最后更新:</span>2019-08-28, 14:18:05</p>
+    <p><span class="copy-title">最后更新:</span>2019-08-28, 14:21:00</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/28/k8s-集群搭建/" title="k8s-集群搭建">https://mztb0511.github.io/2019/08/28/k8s-集群搭建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
