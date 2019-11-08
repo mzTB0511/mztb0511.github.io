@@ -6,18 +6,18 @@
   <meta name="keywords" content=" app , 生个娃 ">
   <meta name="description" content="App-项目运维 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="App项目手册子系统项目   接口项目 集群IP 集群端口 主机IP 主机端口    圈子–circle 169.169.200.90 32090 172.16.182.26 nil   问答–question 169.169.200.92 32092 172.16.182.26 nil   文章库–article 169.169.200.93 32093 172.16.182.26 nil">
-<meta name="keywords" content="app,生个娃">
+<meta name="description" content="常用k8s对象k8s ReplicationControllerELK-rc.ymalapiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-elk670 spec:   replicas: 1   selector:     app: ff-dev-elk670   template:     metadata:">
+<meta name="keywords" content="elk,rabbitmq">
 <meta property="og:type" content="article">
-<meta property="og:title" content="App-项目运维">
-<meta property="og:url" content="https://mztb0511.github.io/2019/09/05/App-项目运维/index.html">
+<meta property="og:title" content="k8s-rc-svc">
+<meta property="og:url" content="https://mztb0511.github.io/2019/11/08/k8s-rc-svc/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="App项目手册子系统项目   接口项目 集群IP 集群端口 主机IP 主机端口    圈子–circle 169.169.200.90 32090 172.16.182.26 nil   问答–question 169.169.200.92 32092 172.16.182.26 nil   文章库–article 169.169.200.93 32093 172.16.182.26 nil">
+<meta property="og:description" content="常用k8s对象k8s ReplicationControllerELK-rc.ymalapiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-elk670 spec:   replicas: 1   selector:     app: ff-dev-elk670   template:     metadata:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T03:04:35.531Z">
+<meta property="og:updated_time" content="2019-11-08T05:31:06.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="App-项目运维">
-<meta name="twitter:description" content="App项目手册子系统项目   接口项目 集群IP 集群端口 主机IP 主机端口    圈子–circle 169.169.200.90 32090 172.16.182.26 nil   问答–question 169.169.200.92 32092 172.16.182.26 nil   文章库–article 169.169.200.93 32093 172.16.182.26 nil">
+<meta name="twitter:title" content="k8s-rc-svc">
+<meta name="twitter:description" content="常用k8s对象k8s ReplicationControllerELK-rc.ymalapiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-elk670 spec:   replicas: 1   selector:     app: ff-dev-elk670   template:     metadata:">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,15 +80,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(14)</small></div></li>
-    
-        
-            
-            <li><div data-rel="工具">工具<small>(2)</small></div>
-                
-            </li>
-            
-        
+    <li><div class="all active">全部文章<small>(13)</small></div></li>
     
         
             
@@ -116,10 +108,6 @@
     
         
             
-        
-    
-        
-            
             <li><div data-rel="java"><i class="fold iconfont icon-right"></i>java<small>(1)</small></div>
                 
                     <ul class="sub hide">
@@ -131,6 +119,18 @@
                     </ul>
                 
             </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="工具">工具<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
             
         
     
@@ -156,7 +156,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="14">
+<input type="hidden" id="yelog_site_posts_number" value="13">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -191,19 +191,11 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">makrdown 语法</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">app</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color4">生个娃</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">docker</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -215,6 +207,14 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">makrdown 语法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">hexo</a>
     </li>
     
@@ -223,19 +223,19 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">elk</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">rabbitmq</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">k8s</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">elk</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">rabbitmq</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -255,6 +255,10 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">防火墙</a>
     </li>
     
@@ -267,10 +271,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">kubeadm</a>
     </li>
     
@@ -280,28 +280,12 @@
     
     <nav id="title-list-nav">
         
-        <a  class="工具 "
-           href="/2019/08/13/Markdown语法/"
-           data-tag="makrdown 语法"
-           data-author="" >
-            <span class="post-title" title="Markdown语法">Markdown语法</span>
-            <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
-        </a>
-        
         <a  class="运维 "
            href="/2019/09/05/App-项目运维/"
            data-tag="app,生个娃"
            data-author="" >
             <span class="post-title" title="App-项目运维">App-项目运维</span>
             <span class="post-date" title="2019-09-05 14:57:41">2019/09/05</span>
-        </a>
-        
-        <a  class="运维 docker "
-           href="/2019/08/19/docker-日常运维/"
-           data-tag="docker"
-           data-author="" >
-            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
-            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
         </a>
         
         <a  class="java lambda "
@@ -313,19 +297,27 @@
         </a>
         
         <a  class="工具 "
+           href="/2019/08/13/Markdown语法/"
+           data-tag="makrdown 语法"
+           data-author="" >
+            <span class="post-title" title="Markdown语法">Markdown语法</span>
+            <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 docker "
+           href="/2019/08/19/docker-日常运维/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
+            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
+        </a>
+        
+        <a  class="工具 "
            href="/2019/08/13/hexo3使用说明/"
            data-tag="hexo,hexo3"
            data-author="" >
             <span class="post-title" title="hexo3使用说明">hexo3使用说明</span>
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/11/08/k8s-rc-svc/"
-           data-tag="elk,rabbitmq"
-           data-author="" >
-            <span class="post-title" title="k8s-rc-svc">k8s-rc-svc</span>
-            <span class="post-date" title="2019-11-08 13:24:46">2019/11/08</span>
         </a>
         
         <a  class="运维 k8s "
@@ -336,12 +328,12 @@
             <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
-        <a  class=""
-           href="/2019/11/08/k8s-rc-svc-1/"
-           data-tag=""
+        <a  class="运维 k8s "
+           href="/2019/11/08/k8s-rc-svc/"
+           data-tag="elk,rabbitmq"
            data-author="" >
             <span class="post-title" title="k8s-rc-svc">k8s-rc-svc</span>
-            <span class="post-date" title="2019-11-08 13:34:13">2019/11/08</span>
+            <span class="post-date" title="2019-11-08 13:24:46">2019/11/08</span>
         </a>
         
         <a  class="运维 k8s "
@@ -369,19 +361,19 @@
         </a>
         
         <a  class="运维 "
-           href="/2019/08/19/k8s运维手记/"
-           data-tag="k8s,防火墙,iptables,pod ip无法访问"
-           data-author="" >
-            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
-            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 "
            href="/2019/08/13/linux常用命令/"
            data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux常用命令">linux常用命令</span>
             <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/19/k8s运维手记/"
+           data-tag="k8s,防火墙,iptables,pod ip无法访问"
+           data-author="" >
+            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
+            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
         <a  class="运维 k8s "
@@ -776,7 +768,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#app','#生个娃','#docker','#lambda','#stream','#hexo','#hexo3','#elk','#rabbitmq','#k8s','#k8s实战','#linxu','#vim','#redis','#redis 集群','#防火墙','#iptables','#pod ip无法访问','#linux','#kubeadm',],
+            'data': ['#app','#生个娃','#lambda','#stream','#makrdown 语法','#docker','#hexo','#hexo3','#k8s','#k8s实战','#elk','#rabbitmq','#linxu','#vim','#redis','#redis 集群','#linux','#防火墙','#iptables','#pod ip无法访问','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
