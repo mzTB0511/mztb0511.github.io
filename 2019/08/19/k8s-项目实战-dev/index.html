@@ -408,7 +408,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-08 13:12:06'>2019-08-19 20:13</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-08 13:17:02'>2019-08-19 20:13</time>
         
     </div>
     <div class="article-meta">
@@ -430,7 +430,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-孕未来开发环境记录"><span class="toc-text">k8s 孕未来开发环境记录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-孕未来开发环境记录"><span class="toc-text">k8s 孕未来开发环境记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-ReplicationController"><span class="toc-text">k8s ReplicationController</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELK-rc-ymal"><span class="toc-text">ELK-rc.ymal</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rabbitmq-rc-ymal"><span class="toc-text">Rabbitmq-rc.ymal</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -473,6 +473,93 @@
 <td>管理端口为 1065</td>
 </tr>
 </tbody></table>
+<h3 id="k8s-ReplicationController"><a href="#k8s-ReplicationController" class="headerlink" title="k8s ReplicationController"></a>k8s ReplicationController</h3><h2 id="ELK-rc-ymal"><a href="#ELK-rc-ymal" class="headerlink" title="ELK-rc.ymal"></a>ELK-rc.ymal</h2><pre><code class="ymal">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ff-dev-elk670
+spec:
+  replicas: 1
+  selector:
+    app: ff-dev-elk670
+  template:
+    metadata:
+      labels:
+        app: ff-dev-elk670
+    spec:
+      volumes:
+        - name: elk-config
+          hostPath:
+            path: &quot;/usr/local/elk/logstash/conf.d&quot;
+        - name: tz-config
+          hostPath:
+            path: &quot;/etc/localtime&quot;
+      containers:
+      - name: ff-dev-elk670
+        image: docker.io/sebp/elk:670
+        tty: true
+        ports:
+        - containerPort: 5601
+          name: manager
+          hostPort: 1065
+        - containerPort: 9200
+          name: managers
+          hostPort: 10029
+        - containerPort: 9300
+          name: trance
+          hostPort: 10039
+        - containerPort: 5044
+          name: cluster
+          hostPort: 14405
+        volumeMounts:
+          - mountPath: /etc/logstash/conf.d
+            name: elk-config
+          - mountPath: /etc/localtime
+            name: tz-config
+        env:
+        - name: ES_HEAP_SIZE
+          value: &quot;256m&quot;
+        - name: LS_HEAP_SIZE
+          value: &quot;500m&quot;
+      nodeSelector:
+        env: dev-125
+</code></pre>
+<h2 id="Rabbitmq-rc-ymal"><a href="#Rabbitmq-rc-ymal" class="headerlink" title="Rabbitmq-rc.ymal"></a>Rabbitmq-rc.ymal</h2><pre><code class="ymal">
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ff-dev-rabbitmq
+spec:
+  replicas: 1
+  selector:
+    app: ff-dev-rabbitmq
+  template:
+    metadata:
+      labels:
+        app: ff-dev-rabbitmq
+    spec:
+      volumes:
+          - name: tz-config
+            hostPath:
+              path: &quot;/etc/localtime&quot;
+      containers:
+      - name: ff-dev-rabbitmq
+        image: rabbitmq:3-management
+        volumeMounts:
+          - mountPath: /etc/localtime
+            name: tz-config
+        ports:
+        - containerPort: 5672
+          hostPort: 2765
+        - containerPort: 15672
+          hostPort: 27651
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: &quot;root&quot;
+        - name: RABBITMQ_DEFAULT_PASS
+          value: &quot;Ame123sante&quot;
+      nodeSelector:
+        env: dev-125
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
@@ -490,7 +577,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-08-19, 20:13:46</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-08, 13:12:06</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-08, 13:17:02</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/19/k8s-项目实战-dev/" title="k8s-项目实战-dev">https://mztb0511.github.io/2019/08/19/k8s-项目实战-dev/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
