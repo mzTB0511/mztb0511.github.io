@@ -6,18 +6,18 @@
   <meta name="keywords" content=" rc ">
   <meta name="description" content="/k8s/lnmp环境构建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
-<meta name="keywords" content="docker,rc">
+<meta name="description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
+<meta name="keywords" content="rc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rabbitmq-容器化部署">
-<meta property="og:url" content="https://mztb0511.github.io/2019/11/08/rabbitmq/Rabbitmq-容器化部署/index.html">
+<meta property="og:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
+<meta property="og:url" content="https://mztb0511.github.io/2019/11/14/k8s/搭建Lnmp环境构建/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta property="og:description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T05:16:18.028Z">
+<meta property="og:updated_time" content="2019-11-14T06:41:16.894Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rabbitmq-容器化部署">
-<meta name="twitter:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta name="twitter:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
+<meta name="twitter:description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -450,7 +450,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 14:39:33'>2019-11-14 13:30</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-14 14:41:16'>2019-11-14 13:30</time>
         
     </div>
     <div class="article-meta">
@@ -637,9 +637,7 @@ spec:
 </ol>
 <p>上面2步中完成 ReplicationController 和 Service 文件的创建后，就可以通过集群中任意 Node的IP 访问ngixn<br>假设某个Node 接口IP 为 192.168.1.100 可以通过 <a href="http://192.1698/1.100" target="_blank" rel="noopener">http://192.1698/1.100</a> 访问。</p>
 <h2 id="如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><a href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建" class="headerlink" title="如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建"></a>如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</h2><p>如下:</p>
-<ul>
-<li>nginx-rc.ymal</li>
-</ul>
+<p>nginx-rc.ymal</p>
 <pre><code class="yaml">apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -682,9 +680,7 @@ spec:
           - containerPort: 443
             name: https
 </code></pre>
-<ul>
-<li>php-rc.yaml</li>
-</ul>
+<p>php-rc.yaml</p>
 <pre><code class="yaml">apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -737,7 +733,7 @@ spec:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-11-14, 13:30:49</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:39:33</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:41:16</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/14/k8s/搭建Lnmp环境构建/" title="/k8s/lnmp环境构建">https://mztb0511.github.io/2019/11/14/k8s/搭建Lnmp环境构建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
