@@ -6,18 +6,18 @@
   <meta name="keywords" content=" rc ">
   <meta name="description" content="/k8s/lnmp环境构建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="以下是基于k8s构建的ReplicationController 文件  k8s 版本 (v1.5.x) 可以直接复制到集群下创建rc 文件   创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selecto">
+<meta name="description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
 <meta name="keywords" content="rc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
 <meta property="og:url" content="https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="以下是基于k8s构建的ReplicationController 文件  k8s 版本 (v1.5.x) 可以直接复制到集群下创建rc 文件   创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selecto">
+<meta property="og:description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T06:35:19.051Z">
+<meta property="og:updated_time" content="2019-11-14T06:38:05.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
-<meta name="twitter:description" content="以下是基于k8s构建的ReplicationController 文件  k8s 版本 (v1.5.x) 可以直接复制到集群下创建rc 文件   创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selecto">
+<meta name="twitter:description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -450,7 +450,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 14:35:19'>2019-11-14 13:30</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-14 14:38:05'>2019-11-14 13:30</time>
         
     </div>
     <div class="article-meta">
@@ -472,7 +472,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是基于k8s构建的ReplicationController-文件"><span class="toc-text">以下是基于k8s构建的ReplicationController 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-nginx-php-RC控制器"><span class="toc-text">创建 nginx,php RC控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建nginx，php-Service-服务"><span class="toc-text">创建nginx，php Service 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建mysql56-RC控制器"><span class="toc-text">创建mysql56 RC控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-mysql-Service-服务"><span class="toc-text">创建 mysql Service 服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><span class="toc-text">如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是在k8s集群下创建Lnmp-环境"><span class="toc-text">以下是在k8s集群下创建Lnmp 环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-nginx-php-RC控制器"><span class="toc-text">创建 nginx,php RC控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建nginx，php-Service-服务"><span class="toc-text">创建nginx，php Service 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建mysql56-RC控制器"><span class="toc-text">创建mysql56 RC控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-mysql-Service-服务"><span class="toc-text">创建 mysql Service 服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><span class="toc-text">如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -487,11 +487,8 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="以下是基于k8s构建的ReplicationController-文件"><a href="#以下是基于k8s构建的ReplicationController-文件" class="headerlink" title="以下是基于k8s构建的ReplicationController 文件"></a>以下是基于k8s构建的ReplicationController 文件</h2><blockquote>
-<ul>
-<li>k8s 版本 (v1.5.x)</li>
-<li>可以直接复制到集群下创建rc 文件</li>
-</ul>
+        <h2 id="以下是在k8s集群下创建Lnmp-环境"><a href="#以下是在k8s集群下创建Lnmp-环境" class="headerlink" title="以下是在k8s集群下创建Lnmp 环境"></a>以下是在k8s集群下创建Lnmp 环境</h2><blockquote>
+<p>k8s 版本 (v1.5.x)<br>可以直接复制到集群下创建rc 文件</p>
 </blockquote>
 <h3 id="创建-nginx-php-RC控制器"><a href="#创建-nginx-php-RC控制器" class="headerlink" title="创建 nginx,php RC控制器"></a>创建 nginx,php RC控制器</h3><pre><code class="yaml">apiVersion: v1
 kind: ReplicationController
@@ -740,7 +737,7 @@ spec:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-11-14, 13:30:49</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:35:19</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:38:05</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/14/k8s/k8s-lnmp环境构建/" title="/k8s/lnmp环境构建">https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
