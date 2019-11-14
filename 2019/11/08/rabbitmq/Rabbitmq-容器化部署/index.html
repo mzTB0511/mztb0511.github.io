@@ -2,22 +2,22 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>k8s-项目实战-测服 | mzTB0511</title>
-  <meta name="keywords" content=" k8s , k8s实战 ">
-  <meta name="description" content="k8s-项目实战-测服 | mzTB0511">
+  <title>Rabbitmq-容器化部署 | mzTB0511</title>
+  <meta name="keywords" content=" docker , rc ">
+  <meta name="description" content="Rabbitmq-容器化部署 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta name="description" content="环境准备PrerequisitesTo run a container using this image, you will need the following: Docker Install Docker, either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X – e.g. us">
 <meta name="keywords" content="docker,rc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rabbitmq-容器化部署">
-<meta property="og:url" content="https://mztb0511.github.io/2019/11/08/Rabbitmq-容器化部署/index.html">
+<meta property="og:title" content="elk-容器化部署">
+<meta property="og:url" content="https://mztb0511.github.io/2019/11/08/elk-容器化部署/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta property="og:description" content="环境准备PrerequisitesTo run a container using this image, you will need the following: Docker Install Docker, either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X – e.g. us">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-08T06:04:50.653Z">
+<meta property="og:updated_time" content="2019-11-08T06:04:41.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rabbitmq-容器化部署">
-<meta name="twitter:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta name="twitter:title" content="elk-容器化部署">
+<meta name="twitter:description" content="环境准备PrerequisitesTo run a container using this image, you will need the following: Docker Install Docker, either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X – e.g. us">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -292,14 +292,6 @@
     
     <nav id="title-list-nav">
         
-        <a  class="运维 rabbitmq "
-           href="/2019/11/08/Rabbitmq-容器化部署/"
-           data-tag="docker,rc"
-           data-author="" >
-            <span class="post-title" title="Rabbitmq-容器化部署">Rabbitmq-容器化部署</span>
-            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
-        </a>
-        
         <a  class="运维 "
            href="/2019/09/05/App-项目运维/"
            data-tag="app,生个娃"
@@ -316,28 +308,12 @@
             <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
         </a>
         
-        <a  class="运维 k8s "
-           href="/2019/08/19/k8s-项目实战-测服/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
-        </a>
-        
         <a  class="运维 elk "
            href="/2019/11/08/elk-容器化部署/"
            data-tag="docker,rc"
            data-author="" >
             <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
             <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
-        </a>
-        
-        <a  class="java lambda "
-           href="/2019/08/16/java-lambda篇/"
-           data-tag="lambda,stream"
-           data-author="" >
-            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
-            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
         </a>
         
         <a  class="工具 "
@@ -348,32 +324,56 @@
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
-        <a  class="运维 "
-           href="/2019/08/16/linux-vim篇/"
-           data-tag="linxu,vim"
+        <a  class="运维 k8s "
+           href="/2019/08/28/k8s/k8s-集群搭建v1.15.2/"
+           data-tag="k8s,kubeadm"
            data-author="" >
-            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
-            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
-        </a>
-        
-        <a  class="运维 "
-           href="/2019/08/13/linux常用命令/"
-           data-tag="linux"
-           data-author="" >
-            <span class="post-title" title="linux常用命令">linux常用命令</span>
-            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+            <span class="post-title" title="k8s-集群搭建v1.15.2">k8s-集群搭建v1.15.2</span>
+            <span class="post-date" title="2019-08-28 00:41:16">2019/08/28</span>
         </a>
         
         <a  class="运维 docker "
-           href="/2019/08/19/docker-日常运维/"
+           href="/2019/08/19/docker/docker-日常运维/"
            data-tag="docker"
            data-author="" >
             <span class="post-title" title="docker-日常运维">docker-日常运维</span>
             <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
         </a>
         
+        <a  class="java lambda "
+           href="/2019/08/16/java/java-lambda篇/"
+           data-tag="lambda,stream"
+           data-author="" >
+            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
+            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/16/linux/linux-vim篇/"
+           data-tag="linxu,vim"
+           data-author="" >
+            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
+            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
+        </a>
+        
         <a  class="运维 k8s "
-           href="/2019/08/19/k8s-项目实战/"
+           href="/2019/08/19/k8s/k8s-项目实战-测服/"
+           data-tag="k8s,k8s实战"
+           data-author="" >
+            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/13/linux/linux常用命令/"
+           data-tag="linux"
+           data-author="" >
+            <span class="post-title" title="linux常用命令">linux常用命令</span>
+            <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战/"
            data-tag="k8s,k8s实战"
            data-author="" >
             <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
@@ -381,27 +381,27 @@
         </a>
         
         <a  class="运维 "
-           href="/2019/08/19/k8s运维手记/"
+           href="/2019/08/19/k8s/k8s运维手记/"
            data-tag="k8s,防火墙,iptables,pod ip无法访问"
            data-author="" >
             <span class="post-title" title="k8s运维手记">k8s运维手记</span>
             <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
+        <a  class="运维 rabbitmq "
+           href="/2019/11/08/rabbitmq/Rabbitmq-容器化部署/"
+           data-tag="docker,rc"
+           data-author="" >
+            <span class="post-title" title="Rabbitmq-容器化部署">Rabbitmq-容器化部署</span>
+            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+        </a>
+        
         <a  class="运维 redis "
-           href="/2019/08/14/redis集群/"
+           href="/2019/08/14/redis/redis集群/"
            data-tag="redis,redis 集群"
            data-author="" >
             <span class="post-title" title="redis集群">redis集群</span>
             <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/08/28/k8s/k8s-集群搭建v1.15.2/"
-           data-tag="k8s,kubeadm"
-           data-author="" >
-            <span class="post-title" title="k8s-集群搭建v1.15.2">k8s-集群搭建v1.15.2</span>
-            <span class="post-date" title="2019-08-28 00:41:16">2019/08/28</span>
         </a>
         
     </nav>
@@ -416,9 +416,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-k8s-项目实战-测服" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rabbitmq/Rabbitmq-容器化部署" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">k8s-项目实战-测服</h1>
+        <h1 class="article-title">Rabbitmq-容器化部署</h1>
     
     <div class="article-meta">
         
@@ -428,23 +428,23 @@
             
                 <a href="javascript:" data-rel="运维">运维</a>/
             
-                <a href="javascript:" data-rel="k8s">k8s</a>
+                <a href="javascript:" data-rel="rabbitmq">rabbitmq</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">k8s</a>
+            <a href="javascript:" class="color2">docker</a>
             
-            <a href="javascript:" class="color1">k8s实战</a>
+            <a href="javascript:" class="color3">rc</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 13:05:23'>2019-08-19 20:13</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-14 13:16:18'>2019-11-08 13:47</time>
         
     </div>
     <div class="article-meta">
@@ -466,7 +466,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-孕未来开发环境记录"><span class="toc-text">k8s 孕未来开发环境记录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rabbitmq-容器化"><span class="toc-text">Rabbitmq 容器化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rabbitmq-k8s集群化"><span class="toc-text">Rabbitmq k8s集群化</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -481,162 +481,46 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="k8s-孕未来开发环境记录"><a href="#k8s-孕未来开发环境记录" class="headerlink" title="k8s 孕未来开发环境记录"></a>k8s 孕未来开发环境记录</h3><table>
-<thead>
-<tr>
-<th>主机</th>
-<th>系统</th>
-<th>域名</th>
-<th>端口</th>
-<th>集群IP端口</th>
-<th>项目地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-rabbitmq</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>2765-&gt;5672, 27651-&gt;15671</td>
-<td>管理端口为 27651</td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-elk670</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>10029-&gt;9200, 10039-&gt;9300, 14405-&gt;5044</td>
-<td>管理端口为 1065</td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>dev-api-ivf</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12386-&gt;80</td>
-<td></td>
-<td>ivf 公众号项目接口</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>dev-api-func</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12383-&gt;80</td>
-<td></td>
-<td>api-func 项目</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-im</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>19501-&gt;9501</td>
-<td></td>
-<td>easySwool IM 客服系统</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-user</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12081-&gt;80</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-base-user</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12086-&gt;80</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-article</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12084-&gt;80</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-nginx-php71</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>10080-&gt;80</td>
-<td></td>
-<td>ngxin-php7.1环境</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-order</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12085-&gt;80</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-apiportal</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12380-&gt;80</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-base</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>12080-&gt;80</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-redis-329</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>15379-&gt;6379</td>
-<td></td>
-<td>redis 系统</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-showdoc</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>4999-&gt;80</td>
-<td></td>
-<td>接口文档系统</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-web-jinqigroup</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>18080-&gt;80</td>
-<td></td>
-<td>锦奇网站-wordpress项目</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-mysql56</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>13307-&gt;3306</td>
-<td></td>
-<td>mysql5.6 版</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-zentao</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>1080-&gt;80</td>
-<td></td>
-<td>禅道项目管理</td>
-</tr>
-<tr>
-<td>k8s-125-dev</td>
-<td>ff-dev-jenkins</td>
-<td><a href="http://112.x.x.125" target="_blank" rel="noopener">http://112.x.x.125</a></td>
-<td>49002-&gt;8080</td>
-<td></td>
-<td>Jenkins CI，CD</td>
-</tr>
-</tbody></table>
+        <h3 id="Rabbitmq-容器化"><a href="#Rabbitmq-容器化" class="headerlink" title="Rabbitmq 容器化"></a>Rabbitmq 容器化</h3><p>docker 命令</p>
+<pre><code class="sh">docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-management
+</code></pre>
+<h3 id="Rabbitmq-k8s集群化"><a href="#Rabbitmq-k8s集群化" class="headerlink" title="Rabbitmq k8s集群化"></a>Rabbitmq k8s集群化</h3><p>rabbitmq-rc.ymal</p>
+<pre><code class="ymal">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ff-dev-rabbitmq
+spec:
+  replicas: 1
+  selector:
+    app: ff-dev-rabbitmq
+  template:
+    metadata:
+      labels:
+        app: ff-dev-rabbitmq
+    spec:
+      volumes:
+          - name: tz-config
+            hostPath:
+              path: &quot;/etc/localtime&quot;
+      containers:
+      - name: ff-dev-rabbitmq
+        image: rabbitmq:3-management
+        volumeMounts:
+          - mountPath: /etc/localtime
+            name: tz-config
+        ports:
+        - containerPort: 5672
+          hostPort: 2765
+        - containerPort: 15672
+          hostPort: 27651
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: &quot;root&quot;
+        - name: RABBITMQ_DEFAULT_PASS
+          value: &quot;Ame123sante&quot;
+      nodeSelector:
+        env: dev-125
+</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
@@ -650,12 +534,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>k8s-项目实战-测服</p>
+    <p><span class="copy-title">文章标题:</span>Rabbitmq-容器化部署</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-19, 20:13:46</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 13:05:23</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/19/k8s-项目实战-测服/" title="k8s-项目实战-测服">https://mztb0511.github.io/2019/08/19/k8s-项目实战-测服/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-08, 13:47:14</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-14, 13:16:18</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/08/rabbitmq/Rabbitmq-容器化部署/" title="Rabbitmq-容器化部署">https://mztb0511.github.io/2019/11/08/rabbitmq/Rabbitmq-容器化部署/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
