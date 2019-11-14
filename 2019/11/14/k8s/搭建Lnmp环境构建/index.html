@@ -6,18 +6,18 @@
   <meta name="keywords" content=" rc ">
   <meta name="description" content="/k8s/lnmp环境构建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
-<meta name="keywords" content="rc">
+<meta name="description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta name="keywords" content="docker,rc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
-<meta property="og:url" content="https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/index.html">
+<meta property="og:title" content="Rabbitmq-容器化部署">
+<meta property="og:url" content="https://mztb0511.github.io/2019/11/08/rabbitmq/Rabbitmq-容器化部署/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
+<meta property="og:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T06:38:05.669Z">
+<meta property="og:updated_time" content="2019-11-14T05:16:18.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
-<meta name="twitter:description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
+<meta name="twitter:title" content="Rabbitmq-容器化部署">
+<meta name="twitter:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -341,14 +341,6 @@
         </a>
         
         <a  class="运维 k8s "
-           href="/2019/11/14/k8s/k8s-lnmp环境构建/"
-           data-tag="rc"
-           data-author="" >
-            <span class="post-title" title="/k8s/lnmp环境构建">/k8s/lnmp环境构建</span>
-            <span class="post-date" title="2019-11-14 13:30:49">2019/11/14</span>
-        </a>
-        
-        <a  class="运维 k8s "
            href="/2019/08/19/k8s/k8s-项目实战/"
            data-tag="k8s,k8s实战"
            data-author="" >
@@ -412,6 +404,14 @@
             <span class="post-date" title="2019-08-28 00:41:16">2019/08/28</span>
         </a>
         
+        <a  class="运维 k8s "
+           href="/2019/11/14/k8s/搭建Lnmp环境构建/"
+           data-tag="rc"
+           data-author="" >
+            <span class="post-title" title="/k8s/lnmp环境构建">/k8s/lnmp环境构建</span>
+            <span class="post-date" title="2019-11-14 13:30:49">2019/11/14</span>
+        </a>
+        
     </nav>
 </div>
     </div>
@@ -424,7 +424,7 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-k8s/k8s-lnmp环境构建" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-k8s/搭建Lnmp环境构建" class="article article-type-post" itemscope itemprop="blogPost">
     
         <h1 class="article-title">/k8s/lnmp环境构建</h1>
     
@@ -450,7 +450,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 14:38:05'>2019-11-14 13:30</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-14 14:39:33'>2019-11-14 13:30</time>
         
     </div>
     <div class="article-meta">
@@ -737,8 +737,8 @@ spec:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-11-14, 13:30:49</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:38:05</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/14/k8s/k8s-lnmp环境构建/" title="/k8s/lnmp环境构建">https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/</a>
+    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:39:33</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/14/k8s/搭建Lnmp环境构建/" title="/k8s/lnmp环境构建">https://mztb0511.github.io/2019/11/14/k8s/搭建Lnmp环境构建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
