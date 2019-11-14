@@ -6,18 +6,18 @@
   <meta name="keywords" content=" rc ">
   <meta name="description" content="/k8s/lnmp环境构建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
-<meta name="keywords" content="docker,rc">
+<meta name="description" content="以下是基于k8s构建的ReplicationController 文件  k8s 版本 (v1.5.x) 可以直接复制到集群下创建rc 文件   创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selecto">
+<meta name="keywords" content="rc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Rabbitmq-容器化部署">
-<meta property="og:url" content="https://mztb0511.github.io/2019/11/08/rabbitmq/Rabbitmq-容器化部署/index.html">
+<meta property="og:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
+<meta property="og:url" content="https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta property="og:description" content="以下是基于k8s构建的ReplicationController 文件  k8s 版本 (v1.5.x) 可以直接复制到集群下创建rc 文件   创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selecto">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T05:16:18.028Z">
+<meta property="og:updated_time" content="2019-11-14T06:35:19.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Rabbitmq-容器化部署">
-<meta name="twitter:description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
+<meta name="twitter:title" content="&#x2F;k8s&#x2F;lnmp环境构建">
+<meta name="twitter:description" content="以下是基于k8s构建的ReplicationController 文件  k8s 版本 (v1.5.x) 可以直接复制到集群下创建rc 文件   创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selecto">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -450,7 +450,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 14:11:52'>2019-11-14 13:30</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-14 14:35:19'>2019-11-14 13:30</time>
         
     </div>
     <div class="article-meta">
@@ -472,7 +472,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是基于k8s构建的ReplicationController-文件"><span class="toc-text">以下是基于k8s构建的ReplicationController 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-php7-1-rc-ymal"><span class="toc-text">nginx-php7.1-rc.ymal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-php-svc-yaml"><span class="toc-text">nginx-php-svc.yaml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><span class="toc-text">如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是基于k8s构建的ReplicationController-文件"><span class="toc-text">以下是基于k8s构建的ReplicationController 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-nginx-php-RC控制器"><span class="toc-text">创建 nginx,php RC控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建nginx，php-Service-服务"><span class="toc-text">创建nginx，php Service 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建mysql56-RC控制器"><span class="toc-text">创建mysql56 RC控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-mysql-Service-服务"><span class="toc-text">创建 mysql Service 服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><span class="toc-text">如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -493,7 +493,7 @@
 <li>可以直接复制到集群下创建rc 文件</li>
 </ul>
 </blockquote>
-<h3 id="nginx-php7-1-rc-ymal"><a href="#nginx-php7-1-rc-ymal" class="headerlink" title="nginx-php7.1-rc.ymal"></a>nginx-php7.1-rc.ymal</h3><pre><code class="yaml">apiVersion: v1
+<h3 id="创建-nginx-php-RC控制器"><a href="#创建-nginx-php-RC控制器" class="headerlink" title="创建 nginx,php RC控制器"></a>创建 nginx,php RC控制器</h3><pre><code class="yaml">apiVersion: v1
 kind: ReplicationController
 metadata:
   name: ff-dev-nginx-php71
@@ -555,7 +555,7 @@ spec:
 <li><p>nodeSelector 定义容器需要调度到某个节点，如果是单机则就不选配置。</p>
 </li>
 </ol>
-<h3 id="nginx-php-svc-yaml"><a href="#nginx-php-svc-yaml" class="headerlink" title="nginx-php-svc.yaml"></a>nginx-php-svc.yaml</h3><pre><code class="yaml">apiVersion: v1
+<h3 id="创建nginx，php-Service-服务"><a href="#创建nginx，php-Service-服务" class="headerlink" title="创建nginx，php Service 服务"></a>创建nginx，php Service 服务</h3><pre><code class="yaml">apiVersion: v1
 kind: Service
 metadata:
   name: ff-dev-nginx-php71
@@ -576,6 +576,69 @@ spec:
 <li>绑定443端口可以实现https</li>
 <li>svc Service 创建了基于pod 的负载均衡功能，也就是说实现了，基本的负载均衡功能，不过也需要Rc 文件中 replicas 定义的 pod 中副本的数量 &gt; 1。</li>
 </ol>
+<h3 id="创建mysql56-RC控制器"><a href="#创建mysql56-RC控制器" class="headerlink" title="创建mysql56 RC控制器"></a>创建mysql56 RC控制器</h3><p>Rc 文件</p>
+<pre><code class="yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ff-mysql-m
+spec:
+  replicas: 1
+  selector:
+    app: ff-mysql-m
+  template:
+    metadata:
+      labels:
+        app: ff-mysql-m
+    spec:
+      volumes:
+        - name: host-storage
+          hostPath:
+            path: &quot;/usr/local/docker/mysql/mysql_m/data&quot;
+        - name: host-conf
+          hostPath:
+            path: &quot;/usr/local/docker/mysql/mysql_m/conf&quot;
+        - name: tz-config
+          hostPath:
+            path: &quot;/etc/localtime&quot;
+      containers:
+      - name: ff-mysql-m
+        image: hub.c.163.com/mztb0511/mysql5.6:v1
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: host-storage
+          - mountPath: /etc/mysql
+            name: host-conf
+          - mountPath: /etc/localtime
+            name: tz-config
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: &quot;ame123sante&quot;
+      ##nodeSelector:
+      ##  type: db
+</code></pre>
+<h3 id="创建-mysql-Service-服务"><a href="#创建-mysql-Service-服务" class="headerlink" title="创建 mysql Service 服务"></a>创建 mysql Service 服务</h3><pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: ff-mysql-m
+spec:
+  clusterIP: 169.169.61.250 #mysql服务所在进群的IP
+  type: NodePort
+  ports:
+    - port: 3306
+      nodePort: 3306
+  selector:
+    app: ff-mysql-m
+</code></pre>
+<p>备注:</p>
+<ol>
+<li><p>这样就可以在整个集群内部通过 169.169.61.250:3306 访问mysql服务</p>
+</li>
+<li><p>可以在进群外部访问任意 Node 节点IP+3306 端口访问 mysql服务(防火墙要开放3306)</p>
+</li>
+</ol>
+<p>上面2步中完成 ReplicationController 和 Service 文件的创建后，就可以通过集群中任意 Node的IP 访问ngixn<br>假设某个Node 接口IP 为 192.168.1.100 可以通过 <a href="http://192.1698/1.100" target="_blank" rel="noopener">http://192.1698/1.100</a> 访问。</p>
 <h2 id="如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><a href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建" class="headerlink" title="如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建"></a>如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</h2><p>如下:</p>
 <ul>
 <li>nginx-rc.ymal</li>
@@ -677,7 +740,7 @@ spec:
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-11-14, 13:30:49</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:11:52</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:35:19</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/14/k8s/k8s-lnmp环境构建/" title="/k8s/lnmp环境构建">https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
