@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>elk-容器化部署 | mzTB0511</title>
-  <meta name="keywords" content=" docker , rc ">
-  <meta name="description" content="elk-容器化部署 | mzTB0511">
+  <title>/k8s/lnmp环境构建 | mzTB0511</title>
+  <meta name="keywords" content=" rc ">
+  <meta name="description" content="/k8s/lnmp环境构建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Rabbitmq 容器化docker 命令 docker run -d --hostname my-rabbit -p 5672:5672 -p 15672:15672  --memory 500m --name myrabbit -e RABBITMQ_DEFAULT_USER=root -e RABBITMQ_DEFAULT_PASS=Ame123sante  rabbitmq:3-manag">
 <meta name="keywords" content="docker,rc">
@@ -424,9 +424,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-elk-容器化部署" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-k8s/k8s-lnmp环境构建" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">elk-容器化部署</h1>
+        <h1 class="article-title">/k8s/lnmp环境构建</h1>
     
     <div class="article-meta">
         
@@ -436,14 +436,12 @@
             
                 <a href="javascript:" data-rel="运维">运维</a>/
             
-                <a href="javascript:" data-rel="elk">elk</a>
+                <a href="javascript:" data-rel="k8s">k8s</a>
             
         </span>
         
         
         <span class="tag">
-            
-            <a href="javascript:" class="color2">docker</a>
             
             <a href="javascript:" class="color3">rc</a>
             
@@ -452,7 +450,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-08 14:04:41'>2019-11-08 13:47</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-14 14:11:52'>2019-11-14 13:30</time>
         
     </div>
     <div class="article-meta">
@@ -474,7 +472,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elk-容器化"><span class="toc-text">elk 容器化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elk-k8s集群化"><span class="toc-text">elk k8s集群化</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是基于k8s构建的ReplicationController-文件"><span class="toc-text">以下是基于k8s构建的ReplicationController 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-php7-1-rc-ymal"><span class="toc-text">nginx-php7.1-rc.ymal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx-php-svc-yaml"><span class="toc-text">nginx-php-svc.yaml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><span class="toc-text">如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -489,72 +487,178 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>Prerequisites<br>To run a container using this image, you will need the following:</p>
-<p>Docker</p>
-<p>Install Docker, either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X – e.g. using Boot2Docker or Vagrant).</p>
-<p>Note – As the sebp/elk image is based on a Linux image, users of Docker for Windows will need to ensure that Docker is using Linux containers.</p>
-<p>A minimum of 4GB RAM assigned to Docker</p>
-<p>Elasticsearch alone needs at least 2GB of RAM to run.</p>
-<p>With Docker for Mac, the amount of RAM dedicated to Docker can be set using the UI: see How to increase docker-machine memory Mac (Stack Overflow).</p>
-<p>A limit on mmap counts equal to 262,144 or more</p>
-<p>!! This is the most frequent reason for Elasticsearch failing to start since Elasticsearch version 5 was released.</p>
-<p>On Linux, use sysctl vm.max_map_count on the host to view the current value, and see Elasticsearch’s documentation on virtual memory for guidance on how to change this value. Note that the limits must be changed on the host; they cannot be changed from within a container.</p>
-<p>If using Docker for Mac, then you will need to start the container with the MAX_MAP_COUNT environment variable (see Overriding start-up variables) set to at least 262144 (using e.g. docker’s -e option) to make Elasticsearch set the limits on mmap counts at start-up time.</p>
-<p>Access to TCP port 5044 from log-emitting clients</p>
-<p>Other ports may need to be explicitly opened: see Usage for the complete list of ports that are exposed.</p>
-<h3 id="elk-容器化"><a href="#elk-容器化" class="headerlink" title="elk 容器化"></a>elk 容器化</h3><p>docker 命令</p>
-<pre><code class="sh">docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it \
--e ES_HEAP_SIZE=&quot;2g&quot; -e LS_HEAP_SIZE=&quot;1g&quot; --name elk sebp/elk:670</code></pre>
-<h3 id="elk-k8s集群化"><a href="#elk-k8s集群化" class="headerlink" title="elk k8s集群化"></a>elk k8s集群化</h3><p>elk-rc.ymal</p>
-<pre><code class="ymal">apiVersion: v1
+        <h2 id="以下是基于k8s构建的ReplicationController-文件"><a href="#以下是基于k8s构建的ReplicationController-文件" class="headerlink" title="以下是基于k8s构建的ReplicationController 文件"></a>以下是基于k8s构建的ReplicationController 文件</h2><blockquote>
+<ul>
+<li>k8s 版本 (v1.5.x)</li>
+<li>可以直接复制到集群下创建rc 文件</li>
+</ul>
+</blockquote>
+<h3 id="nginx-php7-1-rc-ymal"><a href="#nginx-php7-1-rc-ymal" class="headerlink" title="nginx-php7.1-rc.ymal"></a>nginx-php7.1-rc.ymal</h3><pre><code class="yaml">apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: ff-dev-elk670
+  name: ff-dev-nginx-php71
 spec:
   replicas: 1
   selector:
-    app: ff-dev-elk670
+    app: ff-dev-nginx-php71
   template:
     metadata:
       labels:
-        app: ff-dev-elk670
+        app: ff-dev-nginx-php71
     spec:
       volumes:
-        - name: elk-config
+        - name: host-nginx-host
           hostPath:
-            path: &quot;/usr/local/elk/logstash/conf.d&quot;
+            path: &quot;/usr/local/dockerpro/nginx/conf.d&quot;
+        - name: host-nginx-conf
+          hostPath:
+            path: &quot;/usr/local/dockerpro/nginx/nginx.conf&quot;
+        - name: host-storage-www
+          hostPath:
+            path: &quot;/usr/local/dockerpro/www&quot;  
         - name: tz-config
           hostPath:
             path: &quot;/etc/localtime&quot;
       containers:
-      - name: ff-dev-elk670
-        image: docker.io/sebp/elk:670
-        tty: true
-        ports:
-        - containerPort: 5601
-          name: manager
-          hostPort: 1065
-        - containerPort: 9200
-          name: managers
-          hostPort: 10029
-        - containerPort: 9300
-          name: trance
-          hostPort: 10039
-        - containerPort: 5044
-          name: cluster
-          hostPort: 14405
+      - name: ff-dev-nginx
+        image: hub.c.163.com/library/nginx:latest
         volumeMounts:
-          - mountPath: /etc/logstash/conf.d
-            name: elk-config
+          - mountPath: /etc/nginx/conf.d
+            name: host-nginx-host
+          - mountPath: /etc/nginx/nginx.conf
+            name: host-nginx-conf
+          - mountPath: /usr/share/nginx/html
+            name: host-storage-www
+        ports:
+        - containerPort: 80
+            name: http
+          - containerPort: 443
+            name: https
+      - name: ff-dev-php71
+        image: hub.c.163.com/mztb0511/php:7.1
+        volumeMounts:
+          - mountPath: /var/www/html/
+            name: host-storage-www
           - mountPath: /etc/localtime
             name: tz-config
-        env:
-        - name: ES_HEAP_SIZE
-          value: &quot;256m&quot;
-        - name: LS_HEAP_SIZE
-          value: &quot;500m&quot;
+        ports:
+        - containerPort: 9000
       nodeSelector:
         env: dev-125
+</code></pre>
+<p>备注:</p>
+<ol>
+<li><p>nginx 镜像是引入的 网易蜂巢开放镜像库可以直接使用。</p>
+</li>
+<li><p>php7.1镜像是引入的我私人网易蜂巢镜像库，需要自行替换为自己的或者官方镜像。</p>
+</li>
+<li><p>nodeSelector 定义容器需要调度到某个节点，如果是单机则就不选配置。</p>
+</li>
+</ol>
+<h3 id="nginx-php-svc-yaml"><a href="#nginx-php-svc-yaml" class="headerlink" title="nginx-php-svc.yaml"></a>nginx-php-svc.yaml</h3><pre><code class="yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: ff-dev-nginx-php71
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      name: http
+      nodePort: 80
+    - port: 443
+      name: https
+      nodePort: 443
+  selector:
+    app: ff-dev-nginx-php71
+</code></pre>
+<p>备注:</p>
+<ol>
+<li>绑定443端口可以实现https</li>
+<li>svc Service 创建了基于pod 的负载均衡功能，也就是说实现了，基本的负载均衡功能，不过也需要Rc 文件中 replicas 定义的 pod 中副本的数量 &gt; 1。</li>
+</ol>
+<h2 id="如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建"><a href="#如果不需要将-ngxin-和-php7-1-合并到一个-RC-文件可以分开创建" class="headerlink" title="如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建"></a>如果不需要将 ngxin 和 php7.1 合并到一个 RC 文件可以分开创建</h2><p>如下:</p>
+<ul>
+<li>nginx-rc.ymal</li>
+</ul>
+<pre><code class="yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ff-dev-nginx
+spec:
+  replicas: 1
+  selector:
+    app: ff-dev-nginx
+  template:
+    metadata:
+      labels:
+        app: ff-dev-nginx
+    spec:
+      volumes:
+        - name: host-conf
+          hostPath:
+            path: &quot;/usr/local/docker/futurefertile/nginx/conf.d&quot;
+         - name: host-www
+          hostPath:
+            path: &quot;/usr/local/nginx/html&quot;
+        - name: tz-config
+          hostPath:
+            path: &quot;/etc/localtime&quot;
+      containers:
+      - name: ff-dev-nginx
+        image: hub.c.163.com/library/nginx:latest
+        resources:
+          requests:
+            cpu: 200m
+        volumeMounts:
+          - mountPath: /etc/nginx/conf.d
+            name: host-conf
+          - mountPath: /usr/share/nginx/html
+            name: host-www
+          - mountPath: /etc/localtime
+            name: tz-config
+        ports:
+          - containerPort: 80
+            name: http
+          - containerPort: 443
+            name: https
+</code></pre>
+<ul>
+<li>php-rc.yaml</li>
+</ul>
+<pre><code class="yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ff-dev-php71
+spec:
+  replicas: 1
+  selector:
+    app: ff-dev-php71
+  template:
+    metadata:
+      labels:
+        app: ff-dev-php71
+    spec:
+      volumes:
+        - name: host-conf
+          hostPath:
+            path: &quot;/usr/local/docker/futurefertile/nginx/conf.d&quot;
+         - name: host-www
+          hostPath:
+            path: &quot;/usr/local/nginx/html&quot;
+        - name: tz-config
+          hostPath:
+            path: &quot;/etc/localtime&quot;
+      containers:
+      - name: ff-dev-php71
+        image: hub.c.163.com/mztb0511/php:7.1
+        volumeMounts:
+          - mountPath: /var/www/html/
+            name: host-www
+          - mountPath: /etc/localtime
+            name: tz-config
+        ports:
+        - containerPort: 9000
+          hostPort: 9000
 </code></pre>
 
       
@@ -569,12 +673,12 @@ spec:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>elk-容器化部署</p>
+    <p><span class="copy-title">文章标题:</span>/k8s/lnmp环境构建</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-11-08, 13:47:14</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-08, 14:04:41</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/08/elk-容器化部署/" title="elk-容器化部署">https://mztb0511.github.io/2019/11/08/elk-容器化部署/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-14, 13:30:49</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-14, 14:11:52</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/14/k8s/k8s-lnmp环境构建/" title="/k8s/lnmp环境构建">https://mztb0511.github.io/2019/11/14/k8s/k8s-lnmp环境构建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
