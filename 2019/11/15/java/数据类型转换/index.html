@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>linux-vim篇 | mzTB0511</title>
-  <meta name="keywords" content=" linxu , vim ">
-  <meta name="description" content="linux-vim篇 | mzTB0511">
+  <title>String数组,List互转 | mzTB0511</title>
+  <meta name="keywords" content=" String , String[] , List ">
+  <meta name="description" content="String数组,List互转 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="以下是在k8s集群下创建Lnmp 环境 k8s 版本 (v1.5.x)可以直接复制到集群下创建rc 文件  创建 nginx,php RC控制器apiVersion: v1 kind: ReplicationController metadata:   name: ff-dev-nginx-php71 spec:   replicas: 1   selector:     app: ff-dev-">
 <meta name="keywords" content="rc,php,myql,nginx">
@@ -456,9 +456,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-linux/linux-vim篇" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-java/数据类型转换" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">linux-vim篇</h1>
+        <h1 class="article-title">String数组,List互转</h1>
     
     <div class="article-meta">
         
@@ -466,23 +466,25 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="运维">运维</a>
+                <a href="javascript:" data-rel="java">java</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">linxu</a>
+            <a href="javascript:" class="color2">String</a>
             
-            <a href="javascript:" class="color4">vim</a>
+            <a href="javascript:" class="color4">String[]</a>
+            
+            <a href="javascript:" class="color5">List</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 13:19:08'>2019-08-16 13:32</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-15 17:24:19'>2019-11-15 17:18</time>
         
     </div>
     <div class="article-meta">
@@ -504,7 +506,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux-Vim-工具使用"><span class="toc-text">linux Vim 工具使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#汇总版脑图"><span class="toc-text">汇总版脑图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#键盘-键位对照表"><span class="toc-text">键盘 键位对照表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用总结"><span class="toc-text">使用总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-基本对象类型转换"><span class="toc-text">Java 基本对象类型转换</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -519,17 +521,46 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="linux-Vim-工具使用"><a href="#linux-Vim-工具使用" class="headerlink" title="linux Vim 工具使用"></a>linux Vim 工具使用</h3><h4 id="汇总版脑图"><a href="#汇总版脑图" class="headerlink" title="汇总版脑图"></a>汇总版脑图</h4><p><img src="//vim-mind.png" alt></p>
-<h4 id="键盘-键位对照表"><a href="#键盘-键位对照表" class="headerlink" title="键盘 键位对照表"></a>键盘 键位对照表</h4><p><img src="/images/vim-keyboard.png" alt></p>
-<h3 id="使用总结"><a href="#使用总结" class="headerlink" title="使用总结"></a>使用总结</h3><pre><code class="shell">
-$ dd: 删除一行
-$ yy: 复制一行
-$ { : 到段首
-$ } : 到段尾
-$ ( : 到句首
-$ ) : 到句尾
-$ I:  当前行首插入
-$ A:  当前行末插入
+        <h2 id="Java-基本对象类型转换"><a href="#Java-基本对象类型转换" class="headerlink" title="Java 基本对象类型转换"></a>Java 基本对象类型转换</h2><pre><code class="java">public void stringsToStr(){
+  // org.springframework.util.StringUtils
+  // String[] to String
+  final String[] strings = {&quot;helow&quot;,&quot;word&quot;,&quot;!&quot;};
+  System.out.println(&quot;strings -&gt;&quot; + strings);
+
+  // arrayToDelimitedString
+  String delimitedStr = StringUtils.arrayToDelimitedString(strings,&quot;;&quot;);
+  System.out.println(&quot;delimitedStr -&gt;&quot; + delimitedStr);
+
+  // arrayToCommaDelimitedString
+  String commaStr = StringUtils.arrayToCommaDelimitedString(strings);
+  System.out.println(&quot;commaDelimitedStr -&gt;&quot; + commaStr);
+
+}
+</code></pre>
+<p>String[] 转 List</p>
+<pre><code class="java">@Test
+public void stringsToList(){
+  String[] strings = {&quot;hello&quot;,&quot;word!&quot;};
+
+  //java.util.Arrays.asList()
+  List&lt;String&gt; stringList1 = Arrays.asList(strings);
+  System.out.println(&quot;String[] to List&lt;String&gt;  -&gt;&quot; + stringList1);
+
+  //java.util.Arrays.stream   方式加载String[] 对象, JDK&gt;=1.8
+  List&lt;String&gt; stringList2 = Arrays.stream(strings).collect(Collectors.toList());
+  System.out.println(&quot;String[] to List&lt;String&gt;  -&gt;&quot; + stringList2);
+}
+</code></pre>
+<p>List 转 String[]</p>
+<pre><code class="java">@Test
+public void listToStrings(){
+  List&lt;String&gt; stringList = Arrays.asList(&quot;hello&quot;,&quot;word !&quot;);
+
+  //java.util.List.toArray()
+  String[] result = (String[])stringList.toArray();
+  System.out.println(StringUtils.arrayToCommaDelimitedString(result));
+
+}
 </code></pre>
 
       
@@ -544,12 +575,12 @@ $ A:  当前行末插入
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>linux-vim篇</p>
+    <p><span class="copy-title">文章标题:</span>String数组,List互转</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-16, 13:32:58</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 13:19:08</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/16/linux/linux-vim篇/" title="linux-vim篇">https://mztb0511.github.io/2019/08/16/linux/linux-vim篇/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-15, 17:18:20</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-15, 17:24:19</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/15/java/数据类型转换/" title="String数组,List互转">https://mztb0511.github.io/2019/11/15/java/数据类型转换/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
