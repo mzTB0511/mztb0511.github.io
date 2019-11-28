@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="mzTB0511">
 <meta property="og:description" content="收集器 stream().collect 的使用数据实体 Entity 类，以下测试都是基于此Entitypublic class Dish implements Serializable{      private final String name;     private final boolean vegetarian;     private final int calories;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-28T08:07:11.249Z">
+<meta property="og:updated_time" content="2019-11-28T08:08:10.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lambda-stream-collect">
 <meta name="twitter:description" content="收集器 stream().collect 的使用数据实体 Entity 类，以下测试都是基于此Entitypublic class Dish implements Serializable{      private final String name;     private final boolean vegetarian;     private final int calories;">
@@ -536,7 +536,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-28 16:07:11'>2019-11-28 14:45</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-28 16:08:10'>2019-11-28 14:45</time>
         
     </div>
     <div class="article-meta">
@@ -615,7 +615,19 @@
     }
 }
 </code></pre>
-<h2 id="收集器-规约、汇总、分组、分区的使用实例"><a href="#收集器-规约、汇总、分组、分区的使用实例" class="headerlink" title="收集器 规约、汇总、分组、分区的使用实例"></a>收集器 规约、汇总、分组、分区的使用实例</h2><pre><code class="java">/** maxBy
+<h2 id="收集器-规约、汇总、分组、分区的使用实例"><a href="#收集器-规约、汇总、分组、分区的使用实例" class="headerlink" title="收集器 规约、汇总、分组、分区的使用实例"></a>收集器 规约、汇总、分组、分区的使用实例</h2><pre><code class="java">private final List&lt;Dish&gt; menu = Arrays.asList(
+  new Dish(&quot;pork&quot;,false,800,Dish.Type.MEAT),
+  new Dish(&quot;beef&quot;,false,700,Dish.Type.MEAT),
+  new Dish(&quot;chicken&quot;,false,400,Dish.Type.MEAT),
+  new Dish(&quot;frenchfries&quot;,true,530,Dish.Type.OTHER),
+  new Dish(&quot;rice&quot;,true,350,Dish.Type.OTHER),
+  new Dish(&quot;seasonfruit&quot;,true,120,Dish.Type.OTHER),
+  new Dish(&quot;pizza&quot;,true,550,Dish.Type.OTHER),
+  new Dish(&quot;prawns&quot;,false,300,Dish.Type.FISH),
+  new Dish(&quot;salmon&quot;,false,450,Dish.Type.FISH)
+);
+
+/** maxBy
     * 结合中 卡路里最小的菜
     */
   Optional&lt;Dish&gt; maxCaloriesDish = this.menu.stream()
@@ -800,7 +812,7 @@
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-11-28, 14:45:52</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-28, 16:07:11</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-28, 16:08:10</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/28/java/lambda-stream-collect/" title="lambda-stream-collect">https://mztb0511.github.io/2019/11/28/java/lambda-stream-collect/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
