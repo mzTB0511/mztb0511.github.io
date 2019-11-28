@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>linux-vim篇 | mzTB0511</title>
-  <meta name="keywords" content=" linxu , vim ">
-  <meta name="description" content="linux-vim篇 | mzTB0511">
+  <title>lambda-stream-collect | mzTB0511</title>
+  <meta name="keywords" content=" stream , collect ">
+  <meta name="description" content="lambda-stream-collect | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Java 基本对象类型转换String[] 转 String public void stringsToStr(){   // org.springframework.util.StringUtils   // String[] to String   final String[] strings = {&amp;quot;helow&amp;quot;,&amp;quot;word&amp;quot;,&amp;quot;!&amp;quot">
 <meta name="keywords" content="String,String[],List">
@@ -508,9 +508,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-linux/linux-vim篇" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-java/lambda-stream-collect" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">linux-vim篇</h1>
+        <h1 class="article-title">lambda-stream-collect</h1>
     
     <div class="article-meta">
         
@@ -518,23 +518,25 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="运维">运维</a>
+                <a href="javascript:" data-rel="ajva">ajva</a>/
+            
+                <a href="javascript:" data-rel="lambda">lambda</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color1">linxu</a>
+            <a href="javascript:" class="color2">stream</a>
             
-            <a href="javascript:" class="color4">vim</a>
+            <a href="javascript:" class="color3">collect</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 13:19:08'>2019-08-16 13:32</time>
+        创建时间:<time class="date" title='更新时间: 2019-11-28 15:02:16'>2019-11-28 14:45</time>
         
     </div>
     <div class="article-meta">
@@ -556,7 +558,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux-Vim-工具使用"><span class="toc-text">linux Vim 工具使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#汇总版脑图"><span class="toc-text">汇总版脑图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#键盘-键位对照表"><span class="toc-text">键盘 键位对照表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用总结"><span class="toc-text">使用总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#收集器-stream-collect-的使用"><span class="toc-text">收集器 stream().collect 的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据实体-Entity-类，以下测试都是基于此Entity"><span class="toc-text">数据实体 Entity 类，以下测试都是基于此Entity</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#收集器-规约、汇总、分组、分区的使用实例"><span class="toc-text">收集器 规约、汇总、分组、分区的使用实例</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -571,17 +573,215 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="linux-Vim-工具使用"><a href="#linux-Vim-工具使用" class="headerlink" title="linux Vim 工具使用"></a>linux Vim 工具使用</h3><h4 id="汇总版脑图"><a href="#汇总版脑图" class="headerlink" title="汇总版脑图"></a>汇总版脑图</h4><p><img src="//vim-mind.png" alt></p>
-<h4 id="键盘-键位对照表"><a href="#键盘-键位对照表" class="headerlink" title="键盘 键位对照表"></a>键盘 键位对照表</h4><p><img src="/images/vim-keyboard.png" alt></p>
-<h3 id="使用总结"><a href="#使用总结" class="headerlink" title="使用总结"></a>使用总结</h3><pre><code class="shell">
-$ dd: 删除一行
-$ yy: 复制一行
-$ { : 到段首
-$ } : 到段尾
-$ ( : 到句首
-$ ) : 到句尾
-$ I:  当前行首插入
-$ A:  当前行末插入
+        <h2 id="收集器-stream-collect-的使用"><a href="#收集器-stream-collect-的使用" class="headerlink" title="收集器 stream().collect 的使用"></a>收集器 stream().collect 的使用</h2><h3 id="数据实体-Entity-类，以下测试都是基于此Entity"><a href="#数据实体-Entity-类，以下测试都是基于此Entity" class="headerlink" title="数据实体 Entity 类，以下测试都是基于此Entity"></a>数据实体 Entity 类，以下测试都是基于此Entity</h3><pre><code class="java">public class Dish implements Serializable{
+
+    private final String name;
+    private final boolean vegetarian;
+    private final int calories;
+    private final Type type;
+
+    public enum Type {
+        MEAT,
+        FISH,
+        OTHER
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Dish(String name, boolean vegetarian, int calories, Type type) {
+        this.name = name;
+        this.vegetarian = vegetarian;
+        this.calories = calories;
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Dish [calories=&quot; + calories + &quot;, name=&quot; + name + &quot;, type=&quot; + type + &quot;, vegetarian=&quot; + vegetarian + &quot;]&quot;;
+    }
+}
+</code></pre>
+<h2 id="收集器-规约、汇总、分组、分区的使用实例"><a href="#收集器-规约、汇总、分组、分区的使用实例" class="headerlink" title="收集器 规约、汇总、分组、分区的使用实例"></a>收集器 规约、汇总、分组、分区的使用实例</h2><pre><code class="java">/** maxBy
+    * 结合中 卡路里最小的菜
+    */
+  Optional&lt;Dish&gt; maxCaloriesDish = this.menu.stream()
+        .collect(
+          Collectors.maxBy(
+            Comparator.comparingInt(Dish::getCalories)
+            )
+          );
+  //System.out.println(maxCaloriesDish);
+
+  /** minBy
+    * 结合中 卡路里最小的菜
+    */
+  Optional&lt;Dish&gt; minCaloriesDish = this.menu.stream()
+        .collect(
+          Collectors.minBy(
+            Comparator.comparingInt(Dish::getCalories)
+            )
+          );
+  //System.out.println(minCaloriesDish);
+
+  /** summingInt
+    * 集合值类型 累加操作
+    */
+  int summingcaloriesDish = this.menu.stream()
+        .collect(
+          Collectors.summingInt(
+            Dish::getCalories
+            )
+          );
+  //System.out.println(summingcaloriesDish);
+
+  /** groupingBy
+    * 按类型分组后，规约为 Map 对象
+    */
+  Map&lt;Dish.Type, List&lt;Dish&gt;&gt; groupby = this.menu.stream()
+        .collect(
+          Collectors.groupingBy(
+            Dish::getType
+            )
+          );
+  //System.out.println(groupby);
+
+  /** groupingBy 套用
+    * 按类型分组后，再按名称分组，组中规约为 二级 Map 对象
+    */
+  Map&lt;Dish.Type, Map&lt;String, List&lt;Dish&gt;&gt;&gt; result = this.menu.stream()
+          .collect(
+            Collectors.groupingBy(
+              Dish::getType,
+              Collectors.groupingBy(
+                dish -&gt; {
+                  if (dish.getCalories() &gt; 400){
+                    return &quot;high&quot;;
+                  }else {
+                    return &quot;low&quot;;
+                  }
+                }
+                )
+              )
+            );
+  //System.out.println(result);
+
+
+  /** groupingBy ,maxBy
+    * 分组后取卡路里最大记录
+    */
+  Map&lt;Dish.Type, Optional&lt;Dish&gt;&gt; maxCaloreisDishByType = this.menu.stream()
+          .collect(
+            Collectors.groupingBy(
+              Dish::getType,
+              Collectors.maxBy(
+                Comparator.comparing(
+                  Dish::getCalories
+                  )
+                )
+              )
+            );
+  //System.out.println(maxCaloreisDishByType);
+
+  /** groupingBy ,maxBy
+    * 分组后取卡路里最大记录
+    */
+  Map&lt;Dish.Type, Dish&gt; maxCaloriesByType = this.menu.stream()
+          .collect(
+            Collectors.groupingBy(
+              Dish::getType,  //分类函数
+              Collectors.collectingAndThen(
+                Collectors.maxBy(
+                  Comparator.comparingInt(Dish::getCalories) //包装后的收集器
+                  ),
+                Optional::get //转换函数
+                )
+              )
+            );
+  //System.out.println(maxCaloriesByType);
+
+      /** groupingBy ,summingInt
+    * 分组后计算每一组的总热量
+    */
+  Map&lt;Dish.Type, Integer&gt; summingCaloriesByType = this.menu.stream()
+          .collect(
+            Collectors.groupingBy(
+              Dish::getType,
+              Collectors.summingInt(Dish::getCalories)
+              )
+          );
+
+  //System.out.println(summingCaloriesByType);
+
+  /** mapping
+    * 分组后
+    */
+  Map&lt;Dish.Type, Set&lt;Object&gt;&gt; mappingByType = this.menu.stream()
+          .collect(
+            Collectors.groupingBy(
+              Dish::getType,
+              Collectors.mapping(
+                Dish::getName,
+                Collectors.toCollection(HashSet::new)
+                )
+              )
+          );
+  //System.out.println(mappingByType);
+
+
+
+  /**
+    * 按 vegetarian 对集合分组
+    */
+  Map&lt;Boolean, List&lt;Dish&gt;&gt; partitionByVegetarian = this.menu.stream()
+          .collect(
+            Collectors.partitioningBy(
+              Dish::isVegetarian
+            )
+          );
+  //System.out.println(partitionByVegetarian);  
+
+  /**
+    * 按 vegetarian 分区后再按 type 分组
+    */
+  Map&lt;Boolean, Map&lt;Dish.Type, List&lt;Dish&gt;&gt;&gt; partitionByVegeEndGroupByType = this.menu.stream()
+            .collect(
+            Collectors.partitioningBy(
+              Dish::isVegetarian, //分区函数
+              Collectors.groupingBy( //第二个收集器
+                Dish::getType
+              )
+            )
+          );
+  //System.out.println(partitionByVegeEndGroupByType);
+
+    /**
+    * aprtitioningBy 多级 分区实现
+    * 找 vagatarian 分区后在按 卡路里分区
+    */
+  Map&lt;Boolean, Map&lt;Boolean, List&lt;Dish&gt;&gt;&gt; partitionningByVegeAgainByCalorieas = this.menu.stream()
+                .collect(
+                  Collectors.partitioningBy(
+                    Dish::isVegetarian,
+                    Collectors.partitioningBy(
+                      dish -&gt; dish.getCalories() &gt; 400
+                    )
+                  )
+                );
+  //System.out.println(partitionningByVegeAgainByCalorieas);
 </code></pre>
 
       
@@ -596,12 +796,12 @@ $ A:  当前行末插入
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>linux-vim篇</p>
+    <p><span class="copy-title">文章标题:</span>lambda-stream-collect</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-16, 13:32:58</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 13:19:08</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/16/linux/linux-vim篇/" title="linux-vim篇">https://mztb0511.github.io/2019/08/16/linux/linux-vim篇/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-28, 14:45:52</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-28, 15:02:16</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/28/java/lambda-stream-collect/" title="lambda-stream-collect">https://mztb0511.github.io/2019/11/28/java/lambda-stream-collect/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
