@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>k8s-集群搭建v1.15.2 | mzTB0511</title>
-  <meta name="keywords" content=" k8s , kubeadm ">
-  <meta name="description" content="k8s-集群搭建v1.15.2 | mzTB0511">
+  <title>nsf服务器搭建 | mzTB0511</title>
+  <meta name="keywords" content=" nfs ">
+  <meta name="description" content="nsf服务器搭建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="工作经历生个娃  生个娃App 是公司全面布局移动医疗线上服务，在原有生殖科基础天添加，妇科，男科 形成多科室布局；基于10多年医药销售基础，积累大量权威医生专家资源，提供在线咨询问答，文章，视频宣教服务，提供病友社交圈子服务以及保健品商城等的全方位医疗服务类的App。 该项目收开发周期和技术资源等因素影响，确定前端(iOS,android 端)开发外包，后端自研方式。期间主要负责整体项目后台架">
 <meta name="keywords" content="简历">
@@ -516,9 +516,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-k8s/k8s-集群搭建v1.15.2" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-linux/nsf服务器搭建" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">k8s-集群搭建v1.15.2</h1>
+        <h1 class="article-title">nsf服务器搭建</h1>
     
     <div class="article-meta">
         
@@ -526,25 +526,21 @@
         
         <span class="book">
             
-                <a href="javascript:" data-rel="运维">运维</a>/
-            
-                <a href="javascript:" data-rel="k8s">k8s</a>
+                <a href="javascript:" data-rel="linux">linux</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a href="javascript:" class="color4">k8s</a>
-            
-            <a href="javascript:" class="color3">kubeadm</a>
+            <a href="javascript:" class="color4">nfs</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-14 13:11:59'>2019-08-28 00:41</time>
+        创建时间:<time class="date" title='更新时间: 2019-12-09 11:25:55'>2019-12-09 10:29</time>
         
     </div>
     <div class="article-meta">
@@ -566,7 +562,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#kubeadm-安装Kubernetes-1-15-2-最佳实践"><span class="toc-text">kubeadm 安装Kubernetes 1.15.2 -最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一-Kubernetes简介"><span class="toc-text">一. Kubernetes简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、环境准备"><span class="toc-text">二、环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、软件安装"><span class="toc-text">三、软件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、部署master-节点"><span class="toc-text">四、部署master 节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、部署node节点"><span class="toc-text">五、部署node节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、集群状态检测"><span class="toc-text">六、集群状态检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、部署Dashboard"><span class="toc-text">七、部署Dashboard</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Dashboard-管理节点登录token"><span class="toc-text">Dashboard 管理节点登录token</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写在最后"><span class="toc-text">写在最后</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NFS服务器搭建"><span class="toc-text">NFS服务器搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Master-主服务配置"><span class="toc-text">Master 主服务配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客服端配置"><span class="toc-text">客服端配置</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -581,260 +577,116 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="kubeadm-安装Kubernetes-1-15-2-最佳实践"><a href="#kubeadm-安装Kubernetes-1-15-2-最佳实践" class="headerlink" title="kubeadm 安装Kubernetes 1.15.2 -最佳实践"></a>kubeadm 安装Kubernetes 1.15.2 -最佳实践</h3><p>前言</p>
-<p>Kubernetes作为容器编排工具，简化容器管理，提升工作效率而颇受青睐。很多新手部署Kubernetes由于“科学上网”问题举步维艰，本文以实战经验详解kubeadm不用“科学上网”部署Kubernetes的最简方法。</p>
-<h3 id="一-Kubernetes简介"><a href="#一-Kubernetes简介" class="headerlink" title="一. Kubernetes简介"></a>一. Kubernetes简介</h3><p>Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集群的自动化部署、自动扩缩容、维护等功能。它既是一款容器编排工具，也是全新的基于容器技术的分布式架构领先方案。在Docker技术的基础上，为容器化的应用提供部署运行、资源调度、服务发现和动态伸缩等功能，提高了大规模容器集群管理的便捷性。</p>
-<p>K8S集群中有管理节点与工作节点两种类型。管理节点主要负责K8S集群管理，集群中各节点间的信息交互、任务调度，还负责容器、Pod、NameSpaces、PV等生命周期的管理。工作节点主要为容器和Pod提供计算资源，Pod及容器全部运行在工作节点上，工作节点通过kubelet服务与管理节点通信以管理容器的生命周期，并与集群其他节点进行通信。</p>
-<h3 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h3><p>Kubernetes支持在物理服务器或虚拟机中运行，本次使用虚拟机准备测试环境，硬件配置信息如表所示：</p>
+        <h2 id="NFS服务器搭建"><a href="#NFS服务器搭建" class="headerlink" title="NFS服务器搭建"></a>NFS服务器搭建</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ol>
+<li>CentOS 7.x</li>
+<li>yum 包安装 nfs 先关服务</li>
+</ol>
+<p>构建测试环境</p>
 <table>
 <thead>
 <tr>
+<th>主机名</th>
+<th>操作系统</th>
 <th>IP地址</th>
-<th>节点角色</th>
-<th>Hostname</th>
+<th>备注</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>172.16.0.245</td>
 <td>master</td>
-<td>master</td>
+<td>centOs7.3</td>
+<td>172.16.182.27</td>
+<td>主节点</td>
 </tr>
 <tr>
-<td>172.16.0.246</td>
-<td>worker</td>
-<td>node1</td>
+<td>node-176</td>
+<td>centOS 7.3</td>
+<td>172.16.182.26</td>
+<td>176 node节点</td>
 </tr>
 <tr>
-<td>172.16.0.247</td>
-<td>worker</td>
-<td>node2</td>
+<td>node-125</td>
+<td>centOS 7.3</td>
+<td>172.16.182.30</td>
+<td>125 node节点</td>
 </tr>
 </tbody></table>
-<p>注：在所有节点上进行如下操作</p>
-<p>1.设置主机名hostname，管理节点设置主机名为 master 。</p>
-<pre><code class="bash">#bin/bash
-hostnamectl set-hostname master
+<h3 id="Master-主服务配置"><a href="#Master-主服务配置" class="headerlink" title="Master 主服务配置"></a>Master 主服务配置</h3><p>1.安装NSF 相关服务</p>
+<pre><code class="bash">yum install nfs-utils
 </code></pre>
-<p>需要设置其他主机名称时，可将 master 替换为正确的主机名node1、node2即可。</p>
-<p>2.编辑 /etc/hosts 文件，添加域名解析。</p>
-<pre><code class="bash">cat &lt;&lt;EOF &gt;&gt;/etc/hosts
-172.16.0.245 master
-172.16.0.245 node1
-172.16.0.245 node2
-EOF
+<p>2.设置NFS服务共享目录</p>
+<pre><code class="bash">cd /
+mkdir nfsdir
+view /etc/exports
+/nsfdir 172.16.182.0/24(rw,sync,no_root_squash) #表示允许 172.16.182.0 网段的IP访问NFS 服务器
 </code></pre>
-<p>3.关闭防火墙、selinux和swap。</p>
-<pre><code class="bash">systemctl stop firewalld
-systemctl disable firewalld
-setenforce 0
-sed -i &quot;s/^SELINUX=enforcing/SELINUX=disabled/g&quot; /etc/selinux/config
-swapoff -a
-sed -i &#39;s/.*swap.*/#&amp;/&#39; /etc/fstab
+<p>如果开放所有主机访问则设置</p>
+<pre><code class="bash">view /etc/exports
+/nsfdir *(rw,sync,no_root_squash) #表示允许 172.16.182.0 网段的IP访问NFS 服务器
 </code></pre>
-<p>4.配置内核参数，将桥接的IPv4流量传递到iptables的链</p>
-<pre><code class="bash">cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt;EOF
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-EOF
+<p>如果指定特定的IP访问则设置</p>
+<pre><code class="bash">view /etc/exports
+/nfsdir 172.16.182.30(rw,sync,no_root_squash)
+/nfsdir 172.16.182.27(rw,sync,no_root_squash)
+</code></pre>
+<p>下面罗列出常用测参数说明</p>
+<pre><code class="json">ro：共享目录只读
+rw：共享目录可读可写
+all_squash：所有访问用户都映射为匿名用户或用户组
+no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组
+root_squash（默认）：将来访的root用户映射为匿名用户或用户组
+no_root_squash：来访的root用户保持root帐号权限
+secure（默认）：限制客户端只能从小于1024的tcp/ip端口连接服务器
+insecure：允许客户端从大于1024的tcp/ip端口连接服务器
+sync：将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性
+async：将数据先保存在内存缓冲区中，必要时才写入磁盘
+wdelay（默认）：检查是否有相关的写操作，如果有则将这些写操作一起执行，这样可以提高效率
+no_wdelay：若有写操作则立即执行，应与sync配合使用
+subtree_check ：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限
+no_subtree_check（默认） ：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率
+</code></pre>
+<p>记载配置</p>
+<pre><code class="bash">exportfs -r
+</code></pre>
+<p>查看配置生效</p>
+<pre><code class="bash">exports -v
+  /nfsdir         &lt;world&gt;(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,no_root_squash,no_all_squash)</code></pre>
+<p>3.启动服务并加入开机启动项</p>
+<pre><code class="bash">systemctl enable nsf-rpcbind.service
+systemctl start nfs-rpcbind.service
+systemctl enable nsf-server.service
+systemctl start nsf-server.service
+</code></pre>
+<h3 id="客服端配置"><a href="#客服端配置" class="headerlink" title="客服端配置"></a>客服端配置</h3><p>1.安装 NFS服务</p>
+<p>centOS:</p>
+<pre><code class="bash">yum install nfs-utils
+</code></pre>
+<p>ubuntu:</p>
+<pre><code class="bash">apt-get install nfs-common -y
+</code></pre>
+<p>2.创建目录</p>
+<pre><code class="bash">mkdir nfs
+</code></pre>
+<p>3.检查工项目录</p>
+<pre><code class="bash">showmount -e 172.16.182.27
+  Export list for 172.16.182.27:
+  /nfsdir *
+</code></pre>
+<p>4.挂在共享目录</p>
+<pre><code class="bash">mount -t nfs 172.16.182.26:/nfsdir /nfs
+</code></pre>
+<p>5.开启自动挂载服务</p>
+<pre><code class="bash">view /etc/rc.local
+  mount -t nfs 172.27.9.181:/backup /nfs
 
-sysctl --system
+chmod 755 /etc/rc.local
 </code></pre>
-<p>5.配置国内yum源</p>
-<pre><code class="bash">yum install -y wget
-mkdir /etc/yum.repos.d/bak &amp;&amp; mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo
-wget -O /etc/yum.repos.d/epel.repo http://mirrors.cloud.tencent.com/repo/epel-7.repo
-yum clean all &amp;&amp; yum makecache
+<p>6.测试服务是否成功搭建</p>
+<p>master 主节点执行如下命令</p>
+<pre><code class="bash">cd /nfsdir
+vi testnfs.txt
+  helloword
 </code></pre>
-<p>配置国内Kubernetes源</p>
-<pre><code class="bash">cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
-EOF
-</code></pre>
-<p>配置 docker 源</p>
-<pre><code class="bash">wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
-</code></pre>
-<h3 id="三、软件安装"><a href="#三、软件安装" class="headerlink" title="三、软件安装"></a>三、软件安装</h3><p>注：在所有节点上进行如下操作<br>1.安装docker</p>
-<pre><code class="bash">yum install -y docker-ce-18.06.1.ce-3.el7
-systemctl enable docker &amp;&amp; systemctl start docker
-docker –version
-</code></pre>
-<p>Docker version 18.06.1-ce, build e68fc7a<br>docker服务为容器运行提供计算资源，是所有容器运行的基本平台。</p>
-<p>2.安装kubeadm、kubelet、kubectl</p>
-<pre><code class="bash">yum install -y kubelet kubeadm kubectl
-systemctl enable kubelet
-</code></pre>
-<p>Kubelet负责与其他节点集群通信，并进行本节点Pod和容器生命周期的管理。Kubeadm是Kubernetes的自动化部署工具，降低了部署难度，提高效率。Kubectl是Kubernetes集群管理工具。</p>
-<h3 id="四、部署master-节点"><a href="#四、部署master-节点" class="headerlink" title="四、部署master 节点"></a>四、部署master 节点</h3><p>注：在master节点上进行如下操作</p>
-<p>1.在master进行Kubernetes集群初始化。</p>
-<pre><code class="bash">kubeadm init --kubernetes-version=1.15.2 \
---apiserver-advertise-address=172.16.0.245 \
---image-repository registry.aliyuncs.com/google_containers \
---service-cidr=10.1.0.0/16 \
---pod-network-cidr=10.244.0.0/16
-</code></pre>
-<p>定义POD的网段为: 10.244.0.0/16， api server地址就是master本机IP地址。<br>这一步很关键，由于kubeadm 默认从官网k8s.grc.io下载所需镜像，国内无法访问，因此需要通过–image-repository指定阿里云镜像仓库地址，很多新手初次部署都卡在此环节无法进行后续配置。</p>
-<p>集群初始化成功后返回如下信息：</p>
-<pre><code class="bash">#
-[init] Using Kubernetes version: v1.15.2
-[preflight] Running pre-flight checks
-[preflight] Pulling images required for setting up a Kubernetes cluster
-[preflight] This might take a minute or two, depending on the speed of your internet connection
-[preflight] You can also perform this action in beforehand using &#39;kubeadm config images pull&#39;
-[kubelet-start] Writing kubelet environment file with flags to file &quot;/var/lib/kubelet/kubeadm-flags.env&quot;
-[kubelet-start] Writing kubelet configuration to file &quot;/var/lib/kubelet/config.yaml&quot;
-[kubelet-start] Activating the kubelet service
-[certs] Using certificateDir folder &quot;/etc/kubernetes/pki&quot;
-[certs] Generating &quot;front-proxy-ca&quot; certificate and key
-[certs] Generating &quot;front-proxy-client&quot; certificate and key
-[certs] Generating &quot;etcd/ca&quot; certificate and key
-[certs] Generating &quot;etcd/peer&quot; certificate and key
-[certs] etcd/peer serving cert is signed for DNS names [master localhost] and IPs [172.16.0.245 127.0.0.1 ::1]
-[certs] Generating &quot;etcd/healthcheck-client&quot; certificate and key
-[certs] Generating &quot;etcd/server&quot; certificate and key
-[certs] etcd/server serving cert is signed for DNS names [master localhost] and IPs [172.16.0.245 127.0.0.1 ::1]
-[certs] Generating &quot;apiserver-etcd-client&quot; certificate and key
-[certs] Generating &quot;ca&quot; certificate and key
-[certs] Generating &quot;apiserver&quot; certificate and key
-[certs] apiserver serving cert is signed for DNS names [master kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.1.0.1 172.16.0.245]
-[certs] Generating &quot;apiserver-kubelet-client&quot; certificate and key
-[certs] Generating &quot;sa&quot; key and public key
-[kubeconfig] Using kubeconfig folder &quot;/etc/kubernetes&quot;
-[kubeconfig] Writing &quot;admin.conf&quot; kubeconfig file
-[kubeconfig] Writing &quot;kubelet.conf&quot; kubeconfig file
-[kubeconfig] Writing &quot;controller-manager.conf&quot; kubeconfig file
-[kubeconfig] Writing &quot;scheduler.conf&quot; kubeconfig file
-[control-plane] Using manifest folder &quot;/etc/kubernetes/manifests&quot;
-[control-plane] Creating static Pod manifest for &quot;kube-apiserver&quot;
-[control-plane] Creating static Pod manifest for &quot;kube-controller-manager&quot;
-[control-plane] Creating static Pod manifest for &quot;kube-scheduler&quot;
-[etcd] Creating static Pod manifest for local etcd in &quot;/etc/kubernetes/manifests&quot;
-[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory &quot;/etc/kubernetes/manifests&quot;. This can take up to 4m0s
-[apiclient] All control plane components are healthy after 39.504601 seconds
-[upload-config] Storing the configuration used in ConfigMap &quot;kubeadm-config&quot; in the &quot;kube-system&quot; Namespace
-[kubelet] Creating a ConfigMap &quot;kubelet-config-1.15&quot; in namespace kube-system with the configuration for the kubelets in the cluster
-[kubelet-check] Initial timeout of 40s passed.
-[upload-certs] Skipping phase. Please see --upload-certs
-[mark-control-plane] Marking the node master as control-plane by adding the label &quot;node-role.kubernetes.io/master=&#39;&#39;&quot;
-[mark-control-plane] Marking the node master as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
-[bootstrap-token] Using token: dysssb.n8qwbf04iuppqjrk
-[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
-[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
-[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
-[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
-[bootstrap-token] Creating the &quot;cluster-info&quot; ConfigMap in the &quot;kube-public&quot; namespace
-[addons] Applied essential addon: CoreDNS
-[addons] Applied essential addon: kube-proxy
-Your Kubernetes control-plane has initialized successfully!
-To start using your cluster, you need to run the following as a regular user:
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
-You should now deploy a pod network to the cluster.
-Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:
-  https://kubernetes.io/docs/concepts/cluster-administration/addons/
-Then you can join any number of worker nodes by running the following on each as root:
-kubeadm join 172.16.0.245:6443 --token iccaih.r6yah2sprpk46kou     --discovery-token-ca-cert-hash sha256:7a8d739148eb9bd21ff7051195ce75d7b4c26aca7d2b9f2664698e0a0a17ce71
-</code></pre>
-<p>记录生成的最后部分内容，此内容需要在其它节点加入Kubernetes集群时执行。</p>
-<pre><code class="bash">kubeadm join 172.16.0.245:6443 --token iccaih.r6yah2sprpk46kou --discovery-token-ca-cert-hash sha256:7a8d739148eb9bd21ff7051195ce75d7b4c26aca7d2b9f2664698e0a0a17ce71
-</code></pre>
-<p>2.配置kubectl工具</p>
-<pre><code class="bash">mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-kubectl get nodes
-kubectl get cs
-</code></pre>
-<p>3.部署flannel网络</p>
-<pre><code class="bash">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml
-</code></pre>
-<h3 id="五、部署node节点"><a href="#五、部署node节点" class="headerlink" title="五、部署node节点"></a>五、部署node节点</h3><p>注：在所有node节点上进行如下操作</p>
-<p>执行如下命令，使所有node节点加入Kubernetes集群</p>
-<pre><code class="bash">kubeadm join 172.16.0.245:6443 --token iccaih.r6yah2sprpk46kou --discovery-token-ca-cert-hash sha256:7a8d739148eb9bd21ff7051195ce75d7b4c26aca7d2b9f2664698e0a0a17ce71
-</code></pre>
-<p>此命令为集群初始化时（kubeadm init）返回结果中的内容。</p>
-<h3 id="六、集群状态检测"><a href="#六、集群状态检测" class="headerlink" title="六、集群状态检测"></a>六、集群状态检测</h3><p>注：在master节点上进行如下操作</p>
-<p>1.在master节点输入命令检查集群状态，返回如下结果则集群状态正常。</p>
-<pre><code class="bash">#
-NAME     STATUS   ROLES    AGE    VERSION
-master   Ready    master   133m   v1.15.2
-node1    Ready    &lt;none&gt;   109m   v1.15.2
-node2    Ready    &lt;none&gt;   107m   v1.15.2
-</code></pre>
-<p>重点查看STATUS内容为Ready时，则说明集群状态正常。</p>
-<p>2.创建Pod以验证集群是否正常。</p>
-<pre><code class="bash">kubectl create deployment nginx --image=nginx
-kubectl expose deployment nginx --port=80 --type=NodePort
-kubectl get pod,svc
-</code></pre>
-<h3 id="七、部署Dashboard"><a href="#七、部署Dashboard" class="headerlink" title="七、部署Dashboard"></a>七、部署Dashboard</h3><p>注：在master节点上进行如下操作</p>
-<p>1.创建Dashboard的yaml文件</p>
-<pre><code class="bash">wget https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
-</code></pre>
-<p>使用如下命令或直接手动编辑kubernetes-dashboard.yaml文件</p>
-<pre><code class="bash">sed -i &#39;s/k8s.gcr.io/loveone/g&#39; kubernetes-dashboard.yaml
-sed -i &#39;/targetPort:/a\ \ \ \ \ \ nodePort: 30001\n\ \ type: NodePort&#39; kubernetes-dashboard.yaml
-</code></pre>
-<p>手动编辑kubernetes-dashboard.yaml文件时，需要修改两处内容，首先在Dashboard Deployment部分修改Dashboard镜像下载链接，由于默认从官方社区下载，而不“科学上网”是无法下载的，因此修改为：image: loveone/kubernetes-dashboard-amd64:v1.10.1</p>
-<p>此外，需要在Dashboard Service内容加入nodePort： 30001和type: NodePort两项内容，将Dashboard访问端口映射为节点端口，以供外部访问，编辑完成后</p>
-<p>2.部署Dashboard</p>
-<pre><code class="bash">kubectl create -f kubernetes-dashboard.yaml
-</code></pre>
-<p>3.创建完成后，检查相关服务运行状态</p>
-<pre><code class="bash">kubectl get deployment kubernetes-dashboard -n kube-system
-kubectl get pods -n kube-system -o wide
-kubectl get services -n kube-system
-netstat -ntlp|grep 30001
-</code></pre>
-<p>4.在Firefox/Chrome 浏览器输入Dashboard访问地址：<a href="https://172.16.0.245:30001" target="_blank" rel="noopener">https://172.16.0.245:30001</a></p>
-<p>5.查看访问Dashboard的认证令牌</p>
-<pre><code class="bash">kubectl create serviceaccount  dashboard-admin -n kube-system
-kubectl create clusterrolebinding  dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
-kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk &#39;/dashboard-admin/{print $1}&#39;)
-</code></pre>
-<p>6.使用输出的token登录Dashboard。</p>
-<p><img src="/images/dashboard-login.png" alt="登录页"></p>
-<p>8.Dashboard 主界面<br><img src="/images/dashboard-main.png" alt="管理界面"></p>
-<h4 id="Dashboard-管理节点登录token"><a href="#Dashboard-管理节点登录token" class="headerlink" title="Dashboard 管理节点登录token"></a>Dashboard 管理节点登录token</h4><pre><code class="code">
-eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4taGtoZ2YiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYzNkMDYxNWMtOGNkZC00MTMwLWFhODItNGU1NzEwM2M3NmE4Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.s5T-CdYD44LxEaA_o0kgr0lYKZ0FXd7MkULt2ZvqizUsOp7Fn801h8mwo2ft8RxXzNX5Nmr5_VeV-ps0cVwlnb_aS6Qy9Bl10U1uojrsSdWzospYB4_H0ho0nD1qjAxfFtvP3IjHErd4os1qZR2BnVFx9k2_5IxVq3d8W8l_oNQVs53PKvqSziX94POORaHO0ibiNREG1pIMPfvjip_T4yK7o-dqJ4_i-oFxHJgy5fganjBEcnEgmjkmOglMJOQIvLHM9hSrqwUds4I2WHVObyRQ_FtuqxBwa-mR1V_95uk8mZBMmSqbTic3_JuzXgl37J6tfHXGFBUiFkHnw9xl4Q
-</code></pre>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>特别感谢 :<a href="https://www.kubernetes.org.cn/5462.html" target="_blank" rel="noopener">https://www.kubernetes.org.cn/5462.html</a></p>
-<p>1.集群重新初始化<br>Master 节点执行</p>
-<pre><code class="bash">kubeadm reset
-systemctl daemon-reload
-systemctl restart kubelet
-iptables -F &amp;&amp; iptables -t nat -F &amp;&amp; iptables -t mangle -F &amp;&amp; iptables -X
-rm -rf /root/.kube/*
-</code></pre>
-<p>所有之前已经加入的Node节点执行</p>
-<pre><code class="bash">kubeadm reset
-systemctl daemon-reload
-systemctl restart kubelet
-</code></pre>
-<p>切忌通过删除 /etc/kubernete/ 目录下的问题来移除Node 节点，否则再Node节点重新添加到Master 集群执行 <code>kubeadm join</code> 会提示如下错误：</p>
-<p>[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap…<br>[kubelet-check] Initial timeout of 40s passed.</p>
-<p>然后就是超时报错<br>uploading crisocket: timed out waiting for the condition<br>2.如果我们忘记了Master节点的加入token，可以使用如下命令来查看：</p>
-<pre><code class="bash">$ kubeadm token list
-#输出
-iccaih.r6yah2sprpk46kou   21h       2019-08-28T22:48:42+08:00   authentication,signing   The default bootstrap token generated by &#39;kubeadm init&#39;.   system:bootstrappers:kubeadm:default-node-token
-</code></pre>
-<p>默认情况下，token的有效期是24小时，如果我们的token已经过期的话，可以使用以下命令重新生成：</p>
-<pre><code class="bash">kubeadm token create
-# 输出
-u2mt59.tyqpo0v5wf05lx2q
-</code></pre>
-<p>如果我们也没有–discovery-token-ca-cert-hash的值，可以使用以下命令生成：</p>
-<pre><code class="bash">openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2&gt;/dev/null | openssl dgst -sha256 -hex | sed &#39;s/^.* //&#39;
-# 输出
-eebfe256113bee397b218ba832f412273ae734bd4686241fb910885d26efd222
-</code></pre>
+<p>:wq 保存退出后，登录 任意节点主机，cd /nfs 进入nfs 目录下看到有 testnfs.txt 文件则说明服务成功运行。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。 </span>
@@ -848,12 +700,12 @@ eebfe256113bee397b218ba832f412273ae734bd4686241fb910885d26efd222
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>k8s-集群搭建v1.15.2</p>
+    <p><span class="copy-title">文章标题:</span>nsf服务器搭建</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-08-28, 00:41:16</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-14, 13:11:59</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/08/28/k8s/k8s-集群搭建v1.15.2/" title="k8s-集群搭建v1.15.2">https://mztb0511.github.io/2019/08/28/k8s/k8s-集群搭建v1.15.2/</a>
+    <p><span class="copy-title">发布时间:</span>2019-12-09, 10:29:43</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-09, 11:25:55</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/09/linux/nsf服务器搭建/" title="nsf服务器搭建">https://mztb0511.github.io/2019/12/09/linux/nsf服务器搭建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
