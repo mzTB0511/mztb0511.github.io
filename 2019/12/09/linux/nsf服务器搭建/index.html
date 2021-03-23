@@ -2,22 +2,22 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>nsf服务器搭建 | mzTB0511</title>
+  <title>nfs服务器搭建 | mzTB0511</title>
   <meta name="keywords" content=" nfs ">
-  <meta name="description" content="nsf服务器搭建 | mzTB0511">
+  <meta name="description" content="nfs服务器搭建 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="工作经历生个娃  生个娃App 是公司全面布局移动医疗线上服务，在原有生殖科基础天添加，妇科，男科 形成多科室布局；基于10多年医药销售基础，积累大量权威医生专家资源，提供在线咨询问答，文章，视频宣教服务，提供病友社交圈子服务以及保健品商城等的全方位医疗服务类的App。 该项目收开发周期和技术资源等因素影响，确定前端(iOS,android 端)开发外包，后端自研方式。期间主要负责整体项目后台架">
-<meta name="keywords" content="简历">
+<meta name="description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
+<meta name="keywords" content="nfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简历">
-<meta property="og:url" content="https://mztb0511.github.io/2019/11/18/简历/index.html">
+<meta property="og:title" content="nfs服务器搭建">
+<meta property="og:url" content="https://mztb0511.github.io/2019/12/09/linux/nsf服务器搭建/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="工作经历生个娃  生个娃App 是公司全面布局移动医疗线上服务，在原有生殖科基础天添加，妇科，男科 形成多科室布局；基于10多年医药销售基础，积累大量权威医生专家资源，提供在线咨询问答，文章，视频宣教服务，提供病友社交圈子服务以及保健品商城等的全方位医疗服务类的App。 该项目收开发周期和技术资源等因素影响，确定前端(iOS,android 端)开发外包，后端自研方式。期间主要负责整体项目后台架">
+<meta property="og:description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T07:12:24.394Z">
+<meta property="og:updated_time" content="2019-12-09T06:11:25.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简历">
-<meta name="twitter:description" content="工作经历生个娃  生个娃App 是公司全面布局移动医疗线上服务，在原有生殖科基础天添加，妇科，男科 形成多科室布局；基于10多年医药销售基础，积累大量权威医生专家资源，提供在线咨询问答，文章，视频宣教服务，提供病友社交圈子服务以及保健品商城等的全方位医疗服务类的App。 该项目收开发周期和技术资源等因素影响，确定前端(iOS,android 端)开发外包，后端自研方式。期间主要负责整体项目后台架">
+<meta name="twitter:title" content="nfs服务器搭建">
+<meta name="twitter:description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -96,6 +96,10 @@
                             
                         </li>
                             
+                        <li><div data-rel="k8s">k8s<small>(4)</small></div>
+                            
+                        </li>
+                            
                         <li><div data-rel="rabbitmq">rabbitmq<small>(1)</small></div>
                             
                         </li>
@@ -104,11 +108,15 @@
                             
                         </li>
                             
-                        <li><div data-rel="k8s">k8s<small>(4)</small></div>
-                            
-                        </li>
-                            
                     </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="工具">工具<small>(2)</small></div>
                 
             </li>
             
@@ -124,9 +132,9 @@
     
         
             
-            <li><div data-rel="工具">工具<small>(2)</small></div>
-                
-            </li>
+        
+    
+        
             
         
     
@@ -159,14 +167,6 @@
             <li><div data-rel="linux">linux<small>(1)</small></div>
                 
             </li>
-            
-        
-    
-        
-            
-        
-    
-        
             
         
     
@@ -231,19 +231,23 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">app</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">生个娃</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">makrdown 语法</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">docker</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color3">rc</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">简历</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">makrdown 语法</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -255,67 +259,11 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">app</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">生个娃</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linxu</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">vim</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">stream</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">collect</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">nfs</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">lambda</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">String</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">String[]</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">List</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">linux</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">redis</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">redis 集群</a>
+        <a href="javascript:" class="color3">简历</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color4">k8s</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">k8s实战</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -331,6 +279,10 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">php</a>
     </li>
     
@@ -343,6 +295,54 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">String</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">String[]</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">List</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">stream</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">collect</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">lambda</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">nfs</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">linxu</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">vim</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">redis 集群</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">kubeadm</a>
     </li>
     
@@ -352,20 +352,12 @@
     
     <nav id="title-list-nav">
         
-        <a  class="运维 elk "
-           href="/2019/11/08/elk-容器化部署/"
-           data-tag="docker,rc"
+        <a  class="运维 "
+           href="/2019/09/05/App-项目运维/"
+           data-tag="app,生个娃"
            data-author="" >
-            <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
-            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
-        </a>
-        
-        <a  class="个人 "
-           href="/2019/11/18/简历/"
-           data-tag="简历"
-           data-author="" >
-            <span class="post-title" title="简历">简历</span>
-            <span class="post-date" title="2019-11-18 11:45:54">2019/11/18</span>
+            <span class="post-title" title="App-项目运维">App-项目运维</span>
+            <span class="post-date" title="2019-09-05 14:57:41">2019/09/05</span>
         </a>
         
         <a  class="工具 "
@@ -376,6 +368,14 @@
             <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
         </a>
         
+        <a  class="运维 elk "
+           href="/2019/11/08/elk-容器化部署/"
+           data-tag="docker,rc"
+           data-author="" >
+            <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
+            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+        </a>
+        
         <a  class="工具 "
            href="/2019/08/13/hexo3使用说明/"
            data-tag="hexo,hexo3"
@@ -384,44 +384,12 @@
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
-        <a  class="运维 "
-           href="/2019/09/05/App-项目运维/"
-           data-tag="app,生个娃"
+        <a  class="个人 "
+           href="/2019/11/18/简历/"
+           data-tag="简历"
            data-author="" >
-            <span class="post-title" title="App-项目运维">App-项目运维</span>
-            <span class="post-date" title="2019-09-05 14:57:41">2019/09/05</span>
-        </a>
-        
-        <a  class="运维 "
-           href="/2019/08/16/linux/linux-vim篇/"
-           data-tag="linxu,vim"
-           data-author="" >
-            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
-            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
-        </a>
-        
-        <a  class="java stream "
-           href="/2019/11/28/java/lambda-stream-collect/"
-           data-tag="stream,collect"
-           data-author="" >
-            <span class="post-title" title="lambda-stream-collect">lambda-stream-collect</span>
-            <span class="post-date" title="2019-11-28 14:45:52">2019/11/28</span>
-        </a>
-        
-        <a  class="linux "
-           href="/2019/12/09/linux/nsf服务器搭建/"
-           data-tag="nfs"
-           data-author="" >
-            <span class="post-title" title="nsf服务器搭建">nsf服务器搭建</span>
-            <span class="post-date" title="2019-12-09 10:29:43">2019/12/09</span>
-        </a>
-        
-        <a  class="java lambda "
-           href="/2019/08/16/java/java-lambda篇/"
-           data-tag="stream,lambda"
-           data-author="" >
-            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
-            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
+            <span class="post-title" title="简历">简历</span>
+            <span class="post-date" title="2019-11-18 11:45:54">2019/11/18</span>
         </a>
         
         <a  class="运维 docker "
@@ -432,6 +400,38 @@
             <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
         </a>
         
+        <a  class="运维 "
+           href="/2019/08/19/k8s/k8s运维手记/"
+           data-tag="k8s,防火墙,iptables,pod ip无法访问"
+           data-author="" >
+            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
+            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战/"
+           data-tag="k8s,k8s实战"
+           data-author="" >
+            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/11/14/k8s/搭建Lnmp环境构建/"
+           data-tag="rc,php,myql,nginx"
+           data-author="" >
+            <span class="post-title" title="搭建Lnmp环境构建">搭建Lnmp环境构建</span>
+            <span class="post-date" title="2019-11-14 13:30:49">2019/11/14</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战-测服/"
+           data-tag="k8s,k8s实战"
+           data-author="" >
+            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
+        </a>
+        
         <a  class="java "
            href="/2019/11/15/java/数据类型转换/"
            data-tag="String,String[],List"
@@ -440,12 +440,44 @@
             <span class="post-date" title="2019-11-15 17:18:20">2019/11/15</span>
         </a>
         
+        <a  class="java stream "
+           href="/2019/11/28/java/lambda-stream-collect/"
+           data-tag="stream,collect"
+           data-author="" >
+            <span class="post-title" title="lambda-stream-collect">lambda-stream-collect</span>
+            <span class="post-date" title="2019-11-28 14:45:52">2019/11/28</span>
+        </a>
+        
+        <a  class="java lambda "
+           href="/2019/08/16/java/java-lambda篇/"
+           data-tag="stream,lambda"
+           data-author="" >
+            <span class="post-title" title="java-lambda篇">java-lambda篇</span>
+            <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
+        </a>
+        
         <a  class="运维 "
            href="/2019/08/13/linux/linux常用命令/"
            data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux常用命令">linux常用命令</span>
             <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2019/12/09/linux/nsf服务器搭建/"
+           data-tag="nfs"
+           data-author="" >
+            <span class="post-title" title="nfs服务器搭建">nfs服务器搭建</span>
+            <span class="post-date" title="2019-12-09 10:29:43">2019/12/09</span>
+        </a>
+        
+        <a  class="运维 "
+           href="/2019/08/16/linux/linux-vim篇/"
+           data-tag="linxu,vim"
+           data-author="" >
+            <span class="post-title" title="linux-vim篇">linux-vim篇</span>
+            <span class="post-date" title="2019-08-16 13:32:58">2019/08/16</span>
         </a>
         
         <a  class="运维 rabbitmq "
@@ -462,38 +494,6 @@
            data-author="" >
             <span class="post-title" title="redis集群">redis集群</span>
             <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/08/19/k8s/k8s-项目实战-测服/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/08/19/k8s/k8s-项目实战/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 "
-           href="/2019/08/19/k8s/k8s运维手记/"
-           data-tag="k8s,防火墙,iptables,pod ip无法访问"
-           data-author="" >
-            <span class="post-title" title="k8s运维手记">k8s运维手记</span>
-            <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/11/14/k8s/搭建Lnmp环境构建/"
-           data-tag="rc,php,myql,nginx"
-           data-author="" >
-            <span class="post-title" title="搭建Lnmp环境构建">搭建Lnmp环境构建</span>
-            <span class="post-date" title="2019-11-14 13:30:49">2019/11/14</span>
         </a>
         
         <a  class="运维 k8s "
@@ -518,7 +518,7 @@
     <div class="pjax">
         <article id="post-linux/nsf服务器搭建" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">nsf服务器搭建</h1>
+        <h1 class="article-title">nfs服务器搭建</h1>
     
     <div class="article-meta">
         
@@ -540,7 +540,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-09 11:25:55'>2019-12-09 10:29</time>
+        创建时间:<time class="date" title='更新时间: 2019-12-09 14:11:25'>2019-12-09 10:29</time>
         
     </div>
     <div class="article-meta">
@@ -610,18 +610,18 @@
 <td>125 node节点</td>
 </tr>
 </tbody></table>
-<h3 id="Master-主服务配置"><a href="#Master-主服务配置" class="headerlink" title="Master 主服务配置"></a>Master 主服务配置</h3><p>1.安装NSF 相关服务</p>
+<h3 id="Master-主服务配置"><a href="#Master-主服务配置" class="headerlink" title="Master 主服务配置"></a>Master 主服务配置</h3><p>1.安装nfs 相关服务</p>
 <pre><code class="bash">yum install nfs-utils
 </code></pre>
 <p>2.设置NFS服务共享目录</p>
 <pre><code class="bash">cd /
 mkdir nfsdir
 view /etc/exports
-/nsfdir 172.16.182.0/24(rw,sync,no_root_squash) #表示允许 172.16.182.0 网段的IP访问NFS 服务器
+/nfsdir 172.16.182.0/24(rw,sync,no_root_squash) #表示允许 172.16.182.0 网段的IP访问NFS 服务器
 </code></pre>
 <p>如果开放所有主机访问则设置</p>
 <pre><code class="bash">view /etc/exports
-/nsfdir *(rw,sync,no_root_squash) #表示允许 172.16.182.0 网段的IP访问NFS 服务器
+/nfsdir *(rw,sync,no_root_squash) #表示允许 172.16.182.0 网段的IP访问NFS 服务器
 </code></pre>
 <p>如果指定特定的IP访问则设置</p>
 <pre><code class="bash">view /etc/exports
@@ -651,10 +651,10 @@ no_subtree_check（默认） ：即使输出目录是一个子目录，nfs服务
 <pre><code class="bash">exports -v
   /nfsdir         &lt;world&gt;(sync,wdelay,hide,no_subtree_check,sec=sys,rw,secure,no_root_squash,no_all_squash)</code></pre>
 <p>3.启动服务并加入开机启动项</p>
-<pre><code class="bash">systemctl enable nsf-rpcbind.service
+<pre><code class="bash">systemctl enable nfs-rpcbind.service
 systemctl start nfs-rpcbind.service
-systemctl enable nsf-server.service
-systemctl start nsf-server.service
+systemctl enable nfs-server.service
+systemctl start nfs-server.service
 </code></pre>
 <h3 id="客服端配置"><a href="#客服端配置" class="headerlink" title="客服端配置"></a>客服端配置</h3><p>1.安装 NFS服务</p>
 <p>centOS:</p>
@@ -700,12 +700,12 @@ vi testnfs.txt
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>nsf服务器搭建</p>
+    <p><span class="copy-title">文章标题:</span>nfs服务器搭建</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>2019-12-09, 10:29:43</p>
-    <p><span class="copy-title">最后更新:</span>2019-12-09, 11:25:55</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/09/linux/nsf服务器搭建/" title="nsf服务器搭建">https://mztb0511.github.io/2019/12/09/linux/nsf服务器搭建/</a>
+    <p><span class="copy-title">最后更新:</span>2019-12-09, 14:11:25</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/09/linux/nsf服务器搭建/" title="nfs服务器搭建">https://mztb0511.github.io/2019/12/09/linux/nsf服务器搭建/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
@@ -766,7 +766,7 @@ vi testnfs.txt
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#docker','#rc','#简历','#makrdown 语法','#hexo','#hexo3','#app','#生个娃','#linxu','#vim','#stream','#collect','#nfs','#lambda','#String','#String[]','#List','#linux','#redis','#redis 集群','#k8s','#k8s实战','#防火墙','#iptables','#pod ip无法访问','#php','#myql','#nginx','#kubeadm',],
+            'data': ['#app','#生个娃','#makrdown 语法','#docker','#rc','#hexo','#hexo3','#简历','#k8s','#防火墙','#iptables','#pod ip无法访问','#k8s实战','#php','#myql','#nginx','#String','#String[]','#List','#stream','#collect','#lambda','#linux','#nfs','#linxu','#vim','#redis','#redis 集群','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
