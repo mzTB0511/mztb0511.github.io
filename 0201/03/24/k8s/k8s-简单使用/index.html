@@ -6,18 +6,18 @@
   <meta name="keywords" content=" k8s , k8s实战 ">
   <meta name="description" content="k8s-简单使用 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
-<meta name="keywords" content="nfs">
+<meta name="description" content="环境准备 docker 环境 安装 docker-compose;  ES 服务部署  包括ES 服务和 管理节点  elasticsearch-ik:7.9.1  elasticsearch-head:5-alpine   1. 单节点部署方式docker-compose.yml 脚本内容 version: &amp;#39;2&amp;#39; services:   esik:     image: reg">
+<meta name="keywords" content="docker,集群">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nfs服务器搭建">
-<meta property="og:url" content="https://mztb0511.github.io/2019/12/09/linux/nsf服务器搭建/index.html">
+<meta property="og:title" content="ES-容器部署">
+<meta property="og:url" content="https://mztb0511.github.io/2021/06/04/elk/es-容器部署/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
+<meta property="og:description" content="环境准备 docker 环境 安装 docker-compose;  ES 服务部署  包括ES 服务和 管理节点  elasticsearch-ik:7.9.1  elasticsearch-head:5-alpine   1. 单节点部署方式docker-compose.yml 脚本内容 version: &amp;#39;2&amp;#39; services:   esik:     image: reg">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-09T06:11:25.615Z">
+<meta property="og:updated_time" content="2021-06-04T06:07:16.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nfs服务器搭建">
-<meta name="twitter:description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
+<meta name="twitter:title" content="ES-容器部署">
+<meta name="twitter:description" content="环境准备 docker 环境 安装 docker-compose;  ES 服务部署  包括ES 服务和 管理节点  elasticsearch-ik:7.9.1  elasticsearch-head:5-alpine   1. 单节点部署方式docker-compose.yml 脚本内容 version: &amp;#39;2&amp;#39; services:   esik:     image: reg">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,19 +80,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(19)</small></div></li>
+    <li><div class="all active">全部文章<small>(20)</small></div></li>
     
         
             
-            <li><div data-rel="工具">工具<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(13)</small></div>
+            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(14)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -100,15 +92,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="docker">docker<small>(1)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="k8s">k8s<small>(5)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="rabbitmq">rabbitmq<small>(1)</small></div>
+                        <li><div data-rel="es">es<small>(1)</small></div>
                             
                         </li>
                             
@@ -116,7 +100,27 @@
                             
                         </li>
                             
+                        <li><div data-rel="docker">docker<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="rabbitmq">rabbitmq<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="k8s">k8s<small>(5)</small></div>
+                            
+                        </li>
+                            
                     </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="工具">工具<small>(2)</small></div>
                 
             </li>
             
@@ -152,21 +156,25 @@
     
         
             
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
             <li><div data-rel="linux">linux<small>(1)</small></div>
                 
             </li>
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
             
         
     
@@ -188,7 +196,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="19">
+<input type="hidden" id="yelog_site_posts_number" value="20">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -223,10 +231,6 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">makrdown 语法</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">app</a>
     </li>
     
@@ -235,11 +239,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">docker</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">rc</a>
+        <a href="javascript:" class="color2">makrdown 语法</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -251,15 +251,23 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">rc</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">集群</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">lambda</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color2">stream</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">nfs</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -283,11 +291,19 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">redis 集群</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">collect</a>
+        <a href="javascript:" class="color4">nfs</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -296,6 +312,10 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">collect</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -323,14 +343,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">redis</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">redis 集群</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">kubeadm</a>
     </li>
     
@@ -340,14 +352,6 @@
     
     <nav id="title-list-nav">
         
-        <a  class="工具 "
-           href="/2019/08/13/Markdown语法/"
-           data-tag="makrdown 语法"
-           data-author="" >
-            <span class="post-title" title="Markdown语法">Markdown语法</span>
-            <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
-        </a>
-        
         <a  class="运维 "
            href="/2019/09/05/App-项目运维/"
            data-tag="app,生个娃"
@@ -356,12 +360,12 @@
             <span class="post-date" title="2019-09-05 14:57:41">2019/09/05</span>
         </a>
         
-        <a  class="运维 elk "
-           href="/2019/11/08/elk-容器化部署/"
-           data-tag="docker,rc"
+        <a  class="工具 "
+           href="/2019/08/13/Markdown语法/"
+           data-tag="makrdown 语法"
            data-author="" >
-            <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
-            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+            <span class="post-title" title="Markdown语法">Markdown语法</span>
+            <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
         </a>
         
         <a  class="工具 "
@@ -372,12 +376,20 @@
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
-        <a  class="运维 docker "
-           href="/2019/08/19/docker/docker-日常运维/"
-           data-tag="docker"
+        <a  class="运维 elk "
+           href="/2019/11/08/elk/elk-容器化部署/"
+           data-tag="docker,rc"
            data-author="" >
-            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
-            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
+            <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
+            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+        </a>
+        
+        <a  class="运维 es "
+           href="/2021/06/04/elk/es-容器部署/"
+           data-tag="docker,集群"
+           data-author="" >
+            <span class="post-title" title="ES-容器部署">ES-容器部署</span>
+            <span class="post-date" title="2021-06-04 13:47:14">2021/06/04</span>
         </a>
         
         <a  class="java lambda "
@@ -386,14 +398,6 @@
            data-author="" >
             <span class="post-title" title="java-lambda篇">java-lambda篇</span>
             <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
-        </a>
-        
-        <a  class="linux "
-           href="/2019/12/09/linux/nsf服务器搭建/"
-           data-tag="nfs"
-           data-author="" >
-            <span class="post-title" title="nfs服务器搭建">nfs服务器搭建</span>
-            <span class="post-date" title="2019-12-09 10:29:43">2019/12/09</span>
         </a>
         
         <a  class="运维 "
@@ -412,12 +416,52 @@
             <span class="post-date" title="2019-11-15 17:18:20">2019/11/15</span>
         </a>
         
+        <a  class="运维 redis "
+           href="/2019/08/14/redis/redis集群/"
+           data-tag="redis,redis 集群"
+           data-author="" >
+            <span class="post-title" title="redis集群">redis集群</span>
+            <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
+        </a>
+        
+        <a  class="运维 docker "
+           href="/2019/08/19/docker/docker-日常运维/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
+            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 rabbitmq "
+           href="/2019/11/08/rabbitmq/Rabbitmq-容器化部署/"
+           data-tag="docker,rc"
+           data-author="" >
+            <span class="post-title" title="Rabbitmq-容器化部署">Rabbitmq-容器化部署</span>
+            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+        </a>
+        
         <a  class="运维 "
            href="/2019/08/13/linux/linux常用命令/"
            data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux常用命令">linux常用命令</span>
             <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2019/12/09/linux/nsf服务器搭建/"
+           data-tag="nfs"
+           data-author="" >
+            <span class="post-title" title="nfs服务器搭建">nfs服务器搭建</span>
+            <span class="post-date" title="2019-12-09 10:29:43">2019/12/09</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战/"
+           data-tag="k8s,k8s实战"
+           data-author="" >
+            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="java stream "
@@ -429,35 +473,11 @@
         </a>
         
         <a  class="运维 k8s "
-           href="/2019/08/19/k8s/k8s-项目实战/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 k8s "
            href="/2019/11/14/k8s/搭建Lnmp环境构建/"
            data-tag="rc,php,myql,nginx"
            data-author="" >
             <span class="post-title" title="搭建Lnmp环境构建">搭建Lnmp环境构建</span>
             <span class="post-date" title="2019-11-14 13:30:49">2019/11/14</span>
-        </a>
-        
-        <a  class="运维 rabbitmq "
-           href="/2019/11/08/rabbitmq/Rabbitmq-容器化部署/"
-           data-tag="docker,rc"
-           data-author="" >
-            <span class="post-title" title="Rabbitmq-容器化部署">Rabbitmq-容器化部署</span>
-            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/08/19/k8s/k8s-项目实战-测服/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="运维 "
@@ -468,12 +488,12 @@
             <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
-        <a  class="运维 redis "
-           href="/2019/08/14/redis/redis集群/"
-           data-tag="redis,redis 集群"
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战-测服/"
+           data-tag="k8s,k8s实战"
            data-author="" >
-            <span class="post-title" title="redis集群">redis集群</span>
-            <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
+            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="运维 k8s "
@@ -532,7 +552,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2021-03-24 16:56:09'>0201-03-24 16:33</time>
+        创建时间:<time class="date" title='更新时间: 2021-06-04 13:30:06'>0201-03-24 16:33</time>
         
     </div>
     <div class="article-meta">
@@ -554,7 +574,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-k8s简单使用"><span class="toc-text">一. k8s简单使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kubernetes-是什么？"><span class="toc-text">Kubernetes 是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#k8s-集群节点（Node）类型"><span class="toc-text">k8s 集群节点（Node）类型</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s-能做什么？"><span class="toc-text">k8s 能做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s核心组件"><span class="toc-text">k8s核心组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#管理节点"><span class="toc-text">管理节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-apiserver"><span class="toc-text">kube-apiserver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-scheduler"><span class="toc-text">kube-scheduler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-controller-manager"><span class="toc-text">kube-controller-manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cloud-controller-manager"><span class="toc-text">cloud-controller-manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etcd"><span class="toc-text">etcd</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#兼具一致性和高可用性的键值数据库，是集群所有集群数据的后台数据库。"><span class="toc-text">兼具一致性和高可用性的键值数据库，是集群所有集群数据的后台数据库。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作节点"><span class="toc-text">工作节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kubelet"><span class="toc-text">kubelet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-proxy"><span class="toc-text">kube-proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s-常用对象"><span class="toc-text">k8s 常用对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Namespace"><span class="toc-text">Namespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment"><span class="toc-text">Deployment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service"><span class="toc-text">Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statefulsets"><span class="toc-text">Statefulsets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StatefulSet-中的-Pod-拥有一个唯一的顺序索引和稳定的网络身份标识。"><span class="toc-text">StatefulSet 中的 Pod 拥有一个唯一的顺序索引和稳定的网络身份标识。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configmap"><span class="toc-text">Configmap</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-中方式创建"><span class="toc-text">4 中方式创建**</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ingress"><span class="toc-text">Ingress</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-开发人员常用命令"><span class="toc-text">二. 开发人员常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-k8s-配置文件增强工具-kustomize"><span class="toc-text">三. k8s 配置文件增强工具 (kustomize)</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-k8s简单使用"><span class="toc-text">一. k8s简单使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kubernetes-是什么"><span class="toc-text">Kubernetes 是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-集群节点（Node）类型"><span class="toc-text">k8s 集群节点（Node）类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k8s-能做什么"><span class="toc-text">k8s 能做什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s核心组件"><span class="toc-text">k8s核心组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#管理节点"><span class="toc-text">管理节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#kube-apiserver"><span class="toc-text">kube-apiserver</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-scheduler"><span class="toc-text">kube-scheduler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-controller-manager"><span class="toc-text">kube-controller-manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cloud-controller-manager"><span class="toc-text">cloud-controller-manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etcd"><span class="toc-text">etcd</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#兼具一致性和高可用性的键值数据库，是集群所有集群数据的后台数据库。"><span class="toc-text">兼具一致性和高可用性的键值数据库，是集群所有集群数据的后台数据库。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作节点"><span class="toc-text">工作节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kubelet"><span class="toc-text">kubelet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kube-proxy"><span class="toc-text">kube-proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s-常用对象"><span class="toc-text">k8s 常用对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Namespace"><span class="toc-text">Namespace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment"><span class="toc-text">Deployment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service"><span class="toc-text">Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statefulsets"><span class="toc-text">Statefulsets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StatefulSet-中的-Pod-拥有一个唯一的顺序索引和稳定的网络身份标识。"><span class="toc-text">StatefulSet 中的 Pod 拥有一个唯一的顺序索引和稳定的网络身份标识。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Configmap"><span class="toc-text">Configmap</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#4-中方式创建"><span class="toc-text">4 中方式创建**</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ingress"><span class="toc-text">Ingress</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-开发人员常用命令"><span class="toc-text">二. 开发人员常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-k8s-配置文件增强工具-kustomize"><span class="toc-text">三. k8s 配置文件增强工具 (kustomize)</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -569,8 +589,8 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="一-k8s简单使用"><a href="#一-k8s简单使用" class="headerlink" title="一. k8s简单使用"></a>一. k8s简单使用</h1><h2 id="Kubernetes-是什么？"><a href="#Kubernetes-是什么？" class="headerlink" title="Kubernetes 是什么？"></a>Kubernetes 是什么？</h2><p>Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集群的<strong>自动化部署、自动扩缩容、维护</strong>等功能。它既是一款<strong>容器编排工具</strong>，也是全新的基于容器技术的分布式架构领先方案。在 <strong>Docker技术的基础上</strong>，为容器化的应用提供*<em>部署运行、资源调度、服务发现和动态伸缩 *</em>等功能，提高了大规模容器集群管理的便捷性。</p>
-<h6 id="k8s-集群节点（Node）类型"><a href="#k8s-集群节点（Node）类型" class="headerlink" title="k8s 集群节点（Node）类型"></a>k8s 集群节点（Node）类型</h6><ul>
+        <h4 id="一-k8s简单使用"><a href="#一-k8s简单使用" class="headerlink" title="一. k8s简单使用"></a>一. k8s简单使用</h4><h2 id="Kubernetes-是什么"><a href="#Kubernetes-是什么" class="headerlink" title="Kubernetes 是什么"></a>Kubernetes 是什么</h2><p>Kubernetes（简称K8S）是开源的容器集群管理系统，可以实现容器集群的<strong>自动化部署、自动扩缩容、维护</strong>等功能。它既是一款<strong>容器编排工具</strong>，也是全新的基于容器技术的分布式架构领先方案。在 <strong>Docker技术的基础上</strong>，为容器化的应用提供*<em>部署运行、资源调度、服务发现和动态伸缩 *</em>等功能，提高了大规模容器集群管理的便捷性。</p>
+<h3 id="k8s-集群节点（Node）类型"><a href="#k8s-集群节点（Node）类型" class="headerlink" title="k8s 集群节点（Node）类型"></a>k8s 集群节点（Node）类型</h3><ul>
 <li><p><strong>管理节点</strong></p>
 <p> 管理节点主要负责K8S集群管理，集群中各节点间的信息交互、任务调度，还负责容器、Pod、NameSpaces、PV等生命周期的管理。</p>
 </li>
@@ -578,7 +598,7 @@
 <p>工作节点主要为容器和Pod提供计算资源，Pod及容器全部运行在工作节点上，工作节点通过kubelet服务与管理节点通信以管理容器的生命周期，并与集群其他节点进行通信。</p>
 </li>
 </ul>
-<h2 id="k8s-能做什么？"><a href="#k8s-能做什么？" class="headerlink" title="k8s 能做什么？"></a>k8s 能做什么？</h2><ul>
+<h3 id="k8s-能做什么"><a href="#k8s-能做什么" class="headerlink" title="k8s 能做什么"></a>k8s 能做什么</h3><ul>
 <li><p><strong>服务发现和负责均衡</strong></p>
 <p>可以使用 DNS 名称或自己的 IP 地址公开容器服务，如果进入容器的流量很大，可以自动负载均衡并分配网络流量，从而大大提高服务的稳定。</p>
 </li>
@@ -600,7 +620,7 @@
 </ul>
 <h2 id="k8s核心组件"><a href="#k8s核心组件" class="headerlink" title="k8s核心组件"></a>k8s核心组件</h2><ul>
 <li><h3 id="管理节点"><a href="#管理节点" class="headerlink" title="管理节点"></a><strong>管理节点</strong></h3><ul>
-<li><h3 id="kube-apiserver"><a href="#kube-apiserver" class="headerlink" title="kube-apiserver"></a>kube-apiserver</h3><p>API 服务器是 k8s <a href="https://kubernetes.io/zh/docs/reference/glossary/?all=true#term-control-plane" target="_blank" rel="noopener">控制面</a>的组件， 是整个k8s 集群对外服务的访问入口，也是通过它暴露出集群的API服务。 </p>
+<li><h4 id="kube-apiserver"><a href="#kube-apiserver" class="headerlink" title="kube-apiserver"></a>kube-apiserver</h4><p>API 服务器是 k8s <a href="https://kubernetes.io/zh/docs/reference/glossary/?all=true#term-control-plane" target="_blank" rel="noopener">控制面</a>的组件， 是整个k8s 集群对外服务的访问入口，也是通过它暴露出集群的API服务。 </p>
 <p>kube-apiserver 设计上考虑了水平伸缩，它可通过部署多个实例进行伸缩。 就是说可以运行 kube-apiserver 的多个实例，并在这些实例之间平衡流量。</p>
 </li>
 <li><h3 id="kube-scheduler"><a href="#kube-scheduler" class="headerlink" title="kube-scheduler"></a>kube-scheduler</h3><p>负责监视新创建的、未指定运行<a href="https://kubernetes.io/zh/docs/concepts/architecture/nodes/" target="_blank" rel="noopener">节点（node）</a>的 <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/" target="_blank" rel="noopener">Pods</a>，选择节点让 Pod 在上面运行。</p>
@@ -1021,7 +1041,7 @@ kubectl logs nginx-sset-0 --tail 200 -f
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
     <p><span class="copy-title">发布时间:</span>0201-03-24, 16:33:03</p>
-    <p><span class="copy-title">最后更新:</span>2021-03-24, 16:56:09</p>
+    <p><span class="copy-title">最后更新:</span>2021-06-04, 13:30:06</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/0201/03/24/k8s/k8s-简单使用/" title="k8s-简单使用">https://mztb0511.github.io/0201/03/24/k8s/k8s-简单使用/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -1083,7 +1103,7 @@ kubectl logs nginx-sset-0 --tail 200 -f
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#app','#生个娃','#docker','#rc','#hexo','#hexo3','#lambda','#stream','#nfs','#linxu','#vim','#String','#String[]','#List','#linux','#collect','#k8s','#k8s实战','#php','#myql','#nginx','#防火墙','#iptables','#pod ip无法访问','#redis','#redis 集群','#kubeadm',],
+            'data': ['#app','#生个娃','#makrdown 语法','#hexo','#hexo3','#docker','#rc','#集群','#lambda','#stream','#linxu','#vim','#String','#String[]','#List','#redis','#redis 集群','#linux','#nfs','#k8s','#k8s实战','#collect','#php','#myql','#nginx','#防火墙','#iptables','#pod ip无法访问','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

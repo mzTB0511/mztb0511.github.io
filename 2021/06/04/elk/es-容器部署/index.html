@@ -2,22 +2,22 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>elk-容器化部署 | mzTB0511</title>
-  <meta name="keywords" content=" docker , rc ">
-  <meta name="description" content="elk-容器化部署 | mzTB0511">
+  <title>ES-容器部署 | mzTB0511</title>
+  <meta name="keywords" content=" docker , 集群 ">
+  <meta name="description" content="ES-容器部署 | mzTB0511">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
-<meta name="keywords" content="nfs">
+<meta name="description" content="环境准备 docker 环境 安装 docker-compose;  ES 服务部署  包括ES 服务和 管理节点  elasticsearch-ik:7.9.1  elasticsearch-head:5-alpine   1. 单节点部署方式docker-compose.yml 脚本内容 version: &amp;#39;2&amp;#39; services:   esik:     image: reg">
+<meta name="keywords" content="docker,集群">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nfs服务器搭建">
-<meta property="og:url" content="https://mztb0511.github.io/2019/12/09/linux/nsf服务器搭建/index.html">
+<meta property="og:title" content="ES-容器部署">
+<meta property="og:url" content="https://mztb0511.github.io/2021/06/04/elk/es-容器部署/index.html">
 <meta property="og:site_name" content="mzTB0511">
-<meta property="og:description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
+<meta property="og:description" content="环境准备 docker 环境 安装 docker-compose;  ES 服务部署  包括ES 服务和 管理节点  elasticsearch-ik:7.9.1  elasticsearch-head:5-alpine   1. 单节点部署方式docker-compose.yml 脚本内容 version: &amp;#39;2&amp;#39; services:   esik:     image: reg">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-09T06:11:25.615Z">
+<meta property="og:updated_time" content="2021-06-04T06:07:16.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nfs服务器搭建">
-<meta name="twitter:description" content="NFS服务器搭建环境准备 CentOS 7.x yum 包安装 nfs 先关服务  构建测试环境    主机名 操作系统 IP地址 备注    master centOs7.3 172.16.182.27 主节点   node-176 centOS 7.3 172.16.182.26 176 node节点   node-125 centOS 7.3 172.16.182.30 125 node节点">
+<meta name="twitter:title" content="ES-容器部署">
+<meta name="twitter:description" content="环境准备 docker 环境 安装 docker-compose;  ES 服务部署  包括ES 服务和 管理节点  elasticsearch-ik:7.9.1  elasticsearch-head:5-alpine   1. 单节点部署方式docker-compose.yml 脚本内容 version: &amp;#39;2&amp;#39; services:   esik:     image: reg">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -80,19 +80,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(19)</small></div></li>
+    <li><div class="all active">全部文章<small>(20)</small></div></li>
     
         
             
-            <li><div data-rel="工具">工具<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
-            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(13)</small></div>
+            <li><div data-rel="运维"><i class="fold iconfont icon-right"></i>运维<small>(14)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -100,15 +92,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="docker">docker<small>(1)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="k8s">k8s<small>(5)</small></div>
-                            
-                        </li>
-                            
-                        <li><div data-rel="rabbitmq">rabbitmq<small>(1)</small></div>
+                        <li><div data-rel="es">es<small>(1)</small></div>
                             
                         </li>
                             
@@ -116,7 +100,27 @@
                             
                         </li>
                             
+                        <li><div data-rel="docker">docker<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="rabbitmq">rabbitmq<small>(1)</small></div>
+                            
+                        </li>
+                            
+                        <li><div data-rel="k8s">k8s<small>(5)</small></div>
+                            
+                        </li>
+                            
                     </ul>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="工具">工具<small>(2)</small></div>
                 
             </li>
             
@@ -152,21 +156,25 @@
     
         
             
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
             <li><div data-rel="linux">linux<small>(1)</small></div>
                 
             </li>
-            
-        
-    
-        
-            
-        
-    
-        
-            
-        
-    
-        
             
         
     
@@ -188,7 +196,7 @@
     </div>
     <div></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="19">
+<input type="hidden" id="yelog_site_posts_number" value="20">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -223,10 +231,6 @@
     <div class="tags-list">
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">makrdown 语法</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color4">app</a>
     </li>
     
@@ -235,11 +239,7 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color2">docker</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">rc</a>
+        <a href="javascript:" class="color2">makrdown 语法</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -251,15 +251,23 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color2">docker</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">rc</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">集群</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color2">lambda</a>
     </li>
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color2">stream</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">nfs</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -283,11 +291,19 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">redis 集群</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color1">linux</a>
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color3">collect</a>
+        <a href="javascript:" class="color4">nfs</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -296,6 +312,10 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color1">k8s实战</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color3">collect</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -323,14 +343,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a href="javascript:" class="color1">redis</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color4">redis 集群</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a href="javascript:" class="color3">kubeadm</a>
     </li>
     
@@ -340,14 +352,6 @@
     
     <nav id="title-list-nav">
         
-        <a  class="工具 "
-           href="/2019/08/13/Markdown语法/"
-           data-tag="makrdown 语法"
-           data-author="" >
-            <span class="post-title" title="Markdown语法">Markdown语法</span>
-            <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
-        </a>
-        
         <a  class="运维 "
            href="/2019/09/05/App-项目运维/"
            data-tag="app,生个娃"
@@ -356,12 +360,12 @@
             <span class="post-date" title="2019-09-05 14:57:41">2019/09/05</span>
         </a>
         
-        <a  class="运维 elk "
-           href="/2019/11/08/elk-容器化部署/"
-           data-tag="docker,rc"
+        <a  class="工具 "
+           href="/2019/08/13/Markdown语法/"
+           data-tag="makrdown 语法"
            data-author="" >
-            <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
-            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+            <span class="post-title" title="Markdown语法">Markdown语法</span>
+            <span class="post-date" title="2019-08-13 20:00:27">2019/08/13</span>
         </a>
         
         <a  class="工具 "
@@ -372,12 +376,20 @@
             <span class="post-date" title="2019-08-13 19:32:41">2019/08/13</span>
         </a>
         
-        <a  class="运维 docker "
-           href="/2019/08/19/docker/docker-日常运维/"
-           data-tag="docker"
+        <a  class="运维 elk "
+           href="/2019/11/08/elk/elk-容器化部署/"
+           data-tag="docker,rc"
            data-author="" >
-            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
-            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
+            <span class="post-title" title="elk-容器化部署">elk-容器化部署</span>
+            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+        </a>
+        
+        <a  class="运维 es "
+           href="/2021/06/04/elk/es-容器部署/"
+           data-tag="docker,集群"
+           data-author="" >
+            <span class="post-title" title="ES-容器部署">ES-容器部署</span>
+            <span class="post-date" title="2021-06-04 13:47:14">2021/06/04</span>
         </a>
         
         <a  class="java lambda "
@@ -386,14 +398,6 @@
            data-author="" >
             <span class="post-title" title="java-lambda篇">java-lambda篇</span>
             <span class="post-date" title="2019-08-16 14:01:54">2019/08/16</span>
-        </a>
-        
-        <a  class="linux "
-           href="/2019/12/09/linux/nsf服务器搭建/"
-           data-tag="nfs"
-           data-author="" >
-            <span class="post-title" title="nfs服务器搭建">nfs服务器搭建</span>
-            <span class="post-date" title="2019-12-09 10:29:43">2019/12/09</span>
         </a>
         
         <a  class="运维 "
@@ -412,12 +416,52 @@
             <span class="post-date" title="2019-11-15 17:18:20">2019/11/15</span>
         </a>
         
+        <a  class="运维 redis "
+           href="/2019/08/14/redis/redis集群/"
+           data-tag="redis,redis 集群"
+           data-author="" >
+            <span class="post-title" title="redis集群">redis集群</span>
+            <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
+        </a>
+        
+        <a  class="运维 docker "
+           href="/2019/08/19/docker/docker-日常运维/"
+           data-tag="docker"
+           data-author="" >
+            <span class="post-title" title="docker-日常运维">docker-日常运维</span>
+            <span class="post-date" title="2019-08-19 20:00:13">2019/08/19</span>
+        </a>
+        
+        <a  class="运维 rabbitmq "
+           href="/2019/11/08/rabbitmq/Rabbitmq-容器化部署/"
+           data-tag="docker,rc"
+           data-author="" >
+            <span class="post-title" title="Rabbitmq-容器化部署">Rabbitmq-容器化部署</span>
+            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
+        </a>
+        
         <a  class="运维 "
            href="/2019/08/13/linux/linux常用命令/"
            data-tag="linux"
            data-author="" >
             <span class="post-title" title="linux常用命令">linux常用命令</span>
             <span class="post-date" title="2019-08-13 20:59:49">2019/08/13</span>
+        </a>
+        
+        <a  class="linux "
+           href="/2019/12/09/linux/nsf服务器搭建/"
+           data-tag="nfs"
+           data-author="" >
+            <span class="post-title" title="nfs服务器搭建">nfs服务器搭建</span>
+            <span class="post-date" title="2019-12-09 10:29:43">2019/12/09</span>
+        </a>
+        
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战/"
+           data-tag="k8s,k8s实战"
+           data-author="" >
+            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="java stream "
@@ -429,35 +473,11 @@
         </a>
         
         <a  class="运维 k8s "
-           href="/2019/08/19/k8s/k8s-项目实战/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战">k8s-项目实战</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
-        </a>
-        
-        <a  class="运维 k8s "
            href="/2019/11/14/k8s/搭建Lnmp环境构建/"
            data-tag="rc,php,myql,nginx"
            data-author="" >
             <span class="post-title" title="搭建Lnmp环境构建">搭建Lnmp环境构建</span>
             <span class="post-date" title="2019-11-14 13:30:49">2019/11/14</span>
-        </a>
-        
-        <a  class="运维 rabbitmq "
-           href="/2019/11/08/rabbitmq/Rabbitmq-容器化部署/"
-           data-tag="docker,rc"
-           data-author="" >
-            <span class="post-title" title="Rabbitmq-容器化部署">Rabbitmq-容器化部署</span>
-            <span class="post-date" title="2019-11-08 13:47:14">2019/11/08</span>
-        </a>
-        
-        <a  class="运维 k8s "
-           href="/2019/08/19/k8s/k8s-项目实战-测服/"
-           data-tag="k8s,k8s实战"
-           data-author="" >
-            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
-            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="运维 "
@@ -468,12 +488,12 @@
             <span class="post-date" title="2019-08-19 15:57:50">2019/08/19</span>
         </a>
         
-        <a  class="运维 redis "
-           href="/2019/08/14/redis/redis集群/"
-           data-tag="redis,redis 集群"
+        <a  class="运维 k8s "
+           href="/2019/08/19/k8s/k8s-项目实战-测服/"
+           data-tag="k8s,k8s实战"
            data-author="" >
-            <span class="post-title" title="redis集群">redis集群</span>
-            <span class="post-date" title="2019-08-14 13:43:24">2019/08/14</span>
+            <span class="post-title" title="k8s-项目实战-测服">k8s-项目实战-测服</span>
+            <span class="post-date" title="2019-08-19 20:13:46">2019/08/19</span>
         </a>
         
         <a  class="运维 k8s "
@@ -504,9 +524,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-elk-容器化部署" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-elk/es-容器部署" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">elk-容器化部署</h1>
+        <h1 class="article-title">ES-容器部署</h1>
     
     <div class="article-meta">
         
@@ -516,7 +536,7 @@
             
                 <a href="javascript:" data-rel="运维">运维</a>/
             
-                <a href="javascript:" data-rel="elk">elk</a>
+                <a href="javascript:" data-rel="es">es</a>
             
         </span>
         
@@ -525,14 +545,14 @@
             
             <a href="javascript:" class="color2">docker</a>
             
-            <a href="javascript:" class="color3">rc</a>
+            <a href="javascript:" class="color3">集群</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-11-08 14:04:41'>2019-11-08 13:47</time>
+        创建时间:<time class="date" title='更新时间: 2021-06-04 14:07:16'>2021-06-04 13:47</time>
         
     </div>
     <div class="article-meta">
@@ -554,7 +574,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elk-容器化"><span class="toc-text">elk 容器化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elk-k8s集群化"><span class="toc-text">elk k8s集群化</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES-服务部署"><span class="toc-text">ES 服务部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-单节点部署方式"><span class="toc-text">1. 单节点部署方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-集群多节点部署方式"><span class="toc-text">1. 集群多节点部署方式</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -569,72 +589,74 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>Prerequisites<br>To run a container using this image, you will need the following:</p>
-<p>Docker</p>
-<p>Install Docker, either using a native package (Linux) or wrapped in a virtual machine (Windows, OS X – e.g. using Boot2Docker or Vagrant).</p>
-<p>Note – As the sebp/elk image is based on a Linux image, users of Docker for Windows will need to ensure that Docker is using Linux containers.</p>
-<p>A minimum of 4GB RAM assigned to Docker</p>
-<p>Elasticsearch alone needs at least 2GB of RAM to run.</p>
-<p>With Docker for Mac, the amount of RAM dedicated to Docker can be set using the UI: see How to increase docker-machine memory Mac (Stack Overflow).</p>
-<p>A limit on mmap counts equal to 262,144 or more</p>
-<p>!! This is the most frequent reason for Elasticsearch failing to start since Elasticsearch version 5 was released.</p>
-<p>On Linux, use sysctl vm.max_map_count on the host to view the current value, and see Elasticsearch’s documentation on virtual memory for guidance on how to change this value. Note that the limits must be changed on the host; they cannot be changed from within a container.</p>
-<p>If using Docker for Mac, then you will need to start the container with the MAX_MAP_COUNT environment variable (see Overriding start-up variables) set to at least 262144 (using e.g. docker’s -e option) to make Elasticsearch set the limits on mmap counts at start-up time.</p>
-<p>Access to TCP port 5044 from log-emitting clients</p>
-<p>Other ports may need to be explicitly opened: see Usage for the complete list of ports that are exposed.</p>
-<h3 id="elk-容器化"><a href="#elk-容器化" class="headerlink" title="elk 容器化"></a>elk 容器化</h3><p>docker 命令</p>
-<pre><code class="sh">docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it \
--e ES_HEAP_SIZE=&quot;2g&quot; -e LS_HEAP_SIZE=&quot;1g&quot; --name elk sebp/elk:670</code></pre>
-<h3 id="elk-k8s集群化"><a href="#elk-k8s集群化" class="headerlink" title="elk k8s集群化"></a>elk k8s集群化</h3><p>elk-rc.ymal</p>
-<pre><code class="ymal">apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: ff-dev-elk670
-spec:
-  replicas: 1
-  selector:
-    app: ff-dev-elk670
-  template:
-    metadata:
-      labels:
-        app: ff-dev-elk670
-    spec:
-      volumes:
-        - name: elk-config
-          hostPath:
-            path: &quot;/usr/local/elk/logstash/conf.d&quot;
-        - name: tz-config
-          hostPath:
-            path: &quot;/etc/localtime&quot;
-      containers:
-      - name: ff-dev-elk670
-        image: docker.io/sebp/elk:670
-        tty: true
-        ports:
-        - containerPort: 5601
-          name: manager
-          hostPort: 1065
-        - containerPort: 9200
-          name: managers
-          hostPort: 10029
-        - containerPort: 9300
-          name: trance
-          hostPort: 10039
-        - containerPort: 5044
-          name: cluster
-          hostPort: 14405
-        volumeMounts:
-          - mountPath: /etc/logstash/conf.d
-            name: elk-config
-          - mountPath: /etc/localtime
-            name: tz-config
-        env:
-        - name: ES_HEAP_SIZE
-          value: &quot;256m&quot;
-        - name: LS_HEAP_SIZE
-          value: &quot;500m&quot;
-      nodeSelector:
-        env: dev-125
+        <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul>
+<li>docker 环境</li>
+<li>安装 docker-compose;</li>
+</ul>
+<h3 id="ES-服务部署"><a href="#ES-服务部署" class="headerlink" title="ES 服务部署"></a>ES 服务部署</h3><p>  包括ES 服务和 管理节点</p>
+<ol>
+<li><p>elasticsearch-ik:7.9.1</p>
+</li>
+<li><p>elasticsearch-head:5-alpine</p>
+</li>
+</ol>
+<h4 id="1-单节点部署方式"><a href="#1-单节点部署方式" class="headerlink" title="1. 单节点部署方式"></a>1. 单节点部署方式</h4><p>docker-compose.yml 脚本内容</p>
+<pre><code class="yml">version: &#39;2&#39;
+services:
+  esik:
+    image: reg.supremind.info/hub/visionmind/inference/elasticsearch-ik:7.9.1
+    user: &quot;1000:1000&quot;
+    restart: always
+    environment:
+      - cluster.name=es-7.9.1
+      - &quot;ES_JAVA_OPTS=-Xms1024m -Xmx1024m&quot;
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/var/lib/elasticsearch
+      - ./log:/var/log/elasticsearch
+    ports:
+      - &quot;7200:9200&quot;
+      - &quot;9300:9300&quot;
+  eshead:
+    image: reg.supremind.info/application/java_base/micro/elasticsearch-head:5-alpine
+    container_name: eshead
+    hostname: eshead
+    ports:
+    - &quot;7100:9100/tcp&quot;</code></pre>
+<p>es 配置内容</p>
+<pre><code class="yml">cluster.name: my.es
+node.name: node-235
+node.master: true
+node.data: true
+node.max_local_storage_nodes: 1
+network.host: 0.0.0.0
+network.publish_host: 100.100.142.235
+http.port: 9200
+transport.tcp.port: 9300
+discovery.seed_hosts: [&quot;100.100.142.235:9300&quot;]
+cluster.initial_master_nodes: [&quot;node-235&quot;]
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+</code></pre>
+<h4 id="1-集群多节点部署方式"><a href="#1-集群多节点部署方式" class="headerlink" title="1. 集群多节点部署方式"></a>1. 集群多节点部署方式</h4><p>主机列表<br>    100.100.142.235, 100.100.142.192</p>
+<p>es 配置内容</p>
+<pre><code class="yml">cluster.name: my.es
+node.name: node-192
+node.master: true
+node.data: true
+node.max_local_storage_nodes: 1
+network.host: 0.0.0.0
+network.publish_host: 100.100.142.192
+http.port: 9200
+transport.tcp.port: 9300
+discovery.seed_hosts: [&quot;100.100.142.235:9300&quot;,&quot;100.100.142.192:9300&quot;]
+cluster.initial_master_nodes: [&quot;node-192&quot;]
+http.cors.enabled: true
+http.cors.allow-origin: &quot;*&quot;
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
 </code></pre>
 
       
@@ -649,12 +671,12 @@ spec:
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>elk-容器化部署</p>
+    <p><span class="copy-title">文章标题:</span>ES-容器部署</p>
     
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="mzTB0511">mzTB0511</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-11-08, 13:47:14</p>
-    <p><span class="copy-title">最后更新:</span>2019-11-08, 14:04:41</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/08/elk-容器化部署/" title="elk-容器化部署">https://mztb0511.github.io/2019/11/08/elk-容器化部署/</a>
+    <p><span class="copy-title">发布时间:</span>2021-06-04, 13:47:14</p>
+    <p><span class="copy-title">最后更新:</span>2021-06-04, 14:07:16</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2021/06/04/elk/es-容器部署/" title="ES-容器部署">https://mztb0511.github.io/2021/06/04/elk/es-容器部署/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
@@ -715,7 +737,7 @@ spec:
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#makrdown 语法','#app','#生个娃','#docker','#rc','#hexo','#hexo3','#lambda','#stream','#nfs','#linxu','#vim','#String','#String[]','#List','#linux','#collect','#k8s','#k8s实战','#php','#myql','#nginx','#防火墙','#iptables','#pod ip无法访问','#redis','#redis 集群','#kubeadm',],
+            'data': ['#app','#生个娃','#makrdown 语法','#hexo','#hexo3','#docker','#rc','#集群','#lambda','#stream','#linxu','#vim','#String','#String[]','#List','#redis','#redis 集群','#linux','#nfs','#k8s','#k8s实战','#collect','#php','#myql','#nginx','#防火墙','#iptables','#pod ip无法访问','#kubeadm',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
